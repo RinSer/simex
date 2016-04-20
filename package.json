@@ -1,0 +1,11 @@
+{
+  "name": "simex",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "meteor-node-stubs": "~0.2.0",
+    "fortawesome:fontawesome": "~4.5.0"
+  }
+}
