@@ -1,5 +1,9 @@
 <body>
 
+	{{#if onmodal}}
+		{{> modal on=modal }}
+	{{/if}}
+
 	{{> header}}
 
 
@@ -24,8 +28,8 @@
 			<div class="cart_login">
 				<p><span class="upper_hover"><i class="fa fa-cart-arrow-down"></i>&nbsp;Оформить заказ</span></p>
 				<p>
-					<span class="upper_hover"><i class="fa fa-user-plus"></i>&nbsp;Зарегистрироваться</span>
-					<span class="upper_hover"><i class="fa fa-sign-in"></i>&nbsp;Войти</span>
+					<span class="upper_hover modal_on register"><i class="fa fa-user-plus"></i>&nbsp;Зарегистрироваться</span>
+					<span class="upper_hover modal_on login"><i class="fa fa-sign-in"></i>&nbsp;Войти</span>
 				</p>
 			</div>
 		</section>
