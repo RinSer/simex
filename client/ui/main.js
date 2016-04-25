@@ -18,25 +18,3 @@ Template.body.helpers({
 	},
 
 });
-
-// Modal template
-Template.modal.events({
-
-	'click .modal_exit':function(event, template) {
-
-		Session.set('modal', false);
-
-	},
-
-})
-
-//Header template
-Template.header.events({
-
-	'click .modal_on':function(event, template) {
-
-		Session.set('modal', true);
-
-	},
-
-});

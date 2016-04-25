@@ -1,0 +1,43 @@
+<template name="modal">
+
+	<div class="modal">
+		<div class="modal_window">
+			<i class="fa fa-times modal_exit" aria-hidden="true"></i>
+			<div class="modal_form">
+				{{#unless need_register}}
+					{{> login}}
+				{{else}}
+					{{> register}}
+				{{/unless}}
+			</div>
+		</div>
+	</div>
+
+</template>
+
+<template name="login">
+
+	<h2><i class="fa fa-sign-in"></i>&nbsp;Войти</h2>
+	<form>
+		<p>Email:<br> <input type="email" name="email"></p>
+		<p>Пароль:<br> <input type="password" name="password"></p>
+		<p class="login_error">Данные неверны</p>
+		<p><input type="submit" value="Войти" class="login_button"></p>
+	</form>
+
+</template>
+
+<template name="register">
+
+	<h2><i class="fa fa-user-plus"></i>&nbsp;Зарегистрироваться</h2>
+	<span class="register_error">Ошибка!</span>
+	<form>
+		<p>Имя:<br> <input type="text" name="name"></p>
+		<p>Email:<br> <input type="email" name="email"></p>
+		<p>Пароль:<br> <input id="password" type="password" name="password"></p>
+		<span class="login_error">Не совпадают!</span>
+		<p>Подтверждение:<br> <input id="pcheck" type="password" name="pcheck"></p>
+		<p><input type="submit" value="Зарегистрироваться" class="login_button"></p>
+	</form>
+
+</template>
