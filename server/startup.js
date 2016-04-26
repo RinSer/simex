@@ -55,4 +55,64 @@ Meteor.startup(() => {
   		console.log("Created user "+user.name);
   	});
   }
+
+  // Create dev news
+  const init_news = [
+
+    {
+      title: "Актуальные биомодели",
+      photos: [
+        {
+          description: "Кровотечение",
+          url: "/placeholder.png",
+          text: "Гастродуоденальное кровотечение Forrest I. Электрокоагуляция, клиппирование и обкалывание \"нативных\" сосудов."
+        },
+        {
+          description: "Полипы",
+          url: "/placeholder.png",
+          text: "Полипы на ножке и широком основании. Биопсия и электрохирургические методы полипэктомии."
+        },
+      ],
+      createdAt: new Date()
+    },
+    {
+      title: "Более актуальные биомодели",
+      photos: [
+        {
+          description: "Кровотечение",
+          url: "/placeholder.png",
+          text: "Гастродуоденальное кровотечение Forrest I. Электрокоагуляция, клиппирование и обкалывание \"нативных\" сосудов."
+        },
+        {
+          description: "Полипы",
+          url: "/placeholder.png",
+          text: "Полипы на ножке и широком основании. Биопсия и электрохирургические методы полипэктомии."
+        },
+      ],
+      createdAt: new Date()
+    },
+    {
+      title: "Самые актуальные биомодели",
+      photos: [
+        {
+          description: "Кровотечение",
+          url: "/placeholder.png",
+          text: "Гастродуоденальное кровотечение Forrest I. Электрокоагуляция, клиппирование и обкалывание \"нативных\" сосудов."
+        },
+        {
+          description: "Полипы",
+          url: "/placeholder.png",
+          text: "Полипы на ножке и широком основании. Биопсия и электрохирургические методы полипэктомии."
+        },
+      ],
+      createdAt: new Date()
+    }
+  ];
+  // Add news if none exist
+  if (News.find().count() === 0) {
+    _.each(init_news, function(news) {
+      News.insert(news);
+      console.log('Added '+news.title+' to news');
+    });
+  }
 });

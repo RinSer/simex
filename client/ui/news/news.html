@@ -1,0 +1,30 @@
+<template name="news">
+
+	{{> news_quote}}
+
+	{{#each news}}
+		{{> each_news}}	
+	{{/each}}
+
+</template>
+
+<template name="news_quote">
+
+	<section class="quote">
+	    <h2>БИОМОДЕЛИ &laquo;ЛИДЕРЫ ПРОДАЖ&raquo;</h2>
+	    <blockquote style="text-align: right;">Откройте для себя самые актуальные тренажеры!</blockquote>
+	    <p>В наших тренажерах мы используем современные научные разработки для создания самых актуальных патологий!</p>
+	</section>
+
+</template>
+
+<template name="each_news">
+
+	<section class="news">
+		<h2>{{title}}</h2>
+		<h3>{{photos.[0].description}}</h3>
+		<img src="{{photos.[0].url}}" width="100%">
+		<p>{{photos.[0].text}}</p>
+	</section>
+
+</template>

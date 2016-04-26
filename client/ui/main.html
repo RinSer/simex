@@ -1,10 +1,17 @@
-<body>
+<template name="SimexLayout">
 
 	{{#if onmodal}}
 		{{> modal on=modal }}
 	{{/if}}
 
-	{{> header}}
+	<div id="wrapper">
+		{{> header}}
 
+		<section id="main">
+			{{> yield}}
+		</section>
 
-</body>
+		{{> footer}}
+	</div>
+
+</template>

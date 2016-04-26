@@ -15,7 +15,6 @@ div.modal {
 div.modal_window {
 
 	margin: 5% auto;
-	width: 50%;
 	border-radius: 8px;
 	background-color: #fff;
 	color: #222;
@@ -48,9 +47,43 @@ div.modal_form {
 
 }
 
-div.modal_form input {
+@media (min-width: 992px) {
 
-	width: 50%;
+	div.modal_form input {
+
+		width: 50%;
+
+	}
+
+}
+
+@media (max-width: 991px) {
+
+	div.modal_form input {
+
+		width: 80%;
+
+	}
+
+}
+
+@media (min-width: 768px) {
+
+	div.modal_window {
+
+		width: 50%;
+
+	}
+
+}
+
+@media (max-width: 767px) {
+
+	div.modal_window {
+
+		width: 80%;
+
+	}
 
 }
 
@@ -58,7 +91,7 @@ div.modal_form input {
 
 span.login_error {
 
-	background-color: #ff0000;
+	background-color: rgba(255, 0, 0, 0.75);
 	color: #fff;
 	padding: 5px;
 	display: none;
@@ -67,7 +100,7 @@ span.login_error {
 
 span.register_error {
 
-	background-color: #ff0000;
+	background-color: rgba(255, 0, 0, 0.75);
 	color: #fff;
 	padding: 5px;
 	display: none;

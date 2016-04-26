@@ -15,11 +15,64 @@ body {
 	margin: 0;
 	padding: 0;
 	color: #222;
+	height: 100%;
+
+}
+
+h2 {
+
+	font-weight: normal;
 
 }
 
 ul {
 
 	padding: 0;
+
+}
+
+div#wrapper {
+
+	min-height: 100vh;
+	position: relative;
+
+}
+
+/*** Main section ***/
+
+section#main {
+
+	margin: 0 auto;
+	padding-bottom: 125px;
+
+}
+
+@media (min-width: 992px) {
+
+	section#main {
+
+		width: 70%;
+
+	}
+
+}
+
+@media (max-width: 991px) {
+
+	section#main {
+
+		width: 80%;
+
+	}
+
+}
+
+@media (max-width: 768px) {
+
+	section#main {
+
+		width: 90%;
+
+	}
 
 }

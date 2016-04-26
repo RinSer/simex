@@ -18,3 +18,10 @@ Meteor.publish('userData', function() {
 		admin: 1
 	}});
 });
+
+// Publish News data
+Meteor.publish('newsData', function() {
+
+	return News.find({}, {fields: {title: 1, photos: 1}, sort: {createdAt: -1}});
+
+});

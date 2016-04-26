@@ -1,0 +1,57 @@
+footer {
+
+	background-color: #2b285f;
+	color: #fff;
+	font-size: 1.125em;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+
+}
+
+footer p {
+
+	margin: 0;
+	padding: 10px;
+	text-align: center;
+
+}
+
+footer a {
+
+	color: #fff;
+
+}
+
+footer a:hover {
+
+	color: #ff0000;
+
+}
+
+section.col-ft-3 {
+
+	float: left;
+
+}
+
+@media (min-width: 768px) {
+
+	section.col-ft-3 {
+
+		width: 33.33%;
+
+	}
+
+}
+
+@media (max-width: 767px) {
+
+	section.col-ft-3 {
+
+		width: 100%;
+
+	}
+
+}

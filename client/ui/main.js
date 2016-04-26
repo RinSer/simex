@@ -3,13 +3,13 @@ import { Session } from 'meteor/session';
 import { ReactiveVar } from 'meteor/reactive-var';
 
 // Main template
-Template.body.onCreated(function() {
+Template.SimexLayout.onCreated(function() {
 
 	Session.set('modal', false);
 
 });
 
-Template.body.helpers({
+Template.SimexLayout.helpers({
 
 	onmodal:function() {
 

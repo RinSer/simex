@@ -3,6 +3,22 @@ import { Template } from 'meteor/templating';
 import { Session } from 'meteor/session';
 
 // Modal template
+Template.modal.onCreated(function() {
+
+	$(document).keyup(function(event) {
+
+		if (event.keyCode === 27) {
+			Session.set('modal', false);
+		}
+
+		if (event.keyCode == 13) {
+			$('form').submit();
+		}
+
+	});
+
+});
+
 Template.modal.helpers({
 
 	need_register:function() {
@@ -34,10 +50,13 @@ Template.login.events({
 		const password = event.target.password.value;
 
 		Meteor.loginWithPassword(email, password, function(err, data) {
-			if (err) $('.login_error').show();
+			if (err) {
+				$('.login_error').show();
+			}
+			else {
+				Session.set('modal', false);
+			}
 		});
-
-		Session.set('modal', false);
 
 	}
 
@@ -63,12 +82,11 @@ Template.register.events({
 				}
 				else {
 					Meteor.loginWithPassword(email, password);
+					Session.set('modal', false);
 				}
 
 			});
 		}
-
-		Session.set('modal', false);
 
 	},
 
