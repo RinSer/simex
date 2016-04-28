@@ -12,3 +12,60 @@ blockquote {
 	padding: 10px 20px;
 
 }
+
+section.news_with_text {
+
+	margin-bottom: 5%;
+	padding-bottom: 5%;
+	border-bottom: 1px solid #2b285f;
+
+}
+
+section.news {
+
+	position: relative;
+
+}
+
+div.news_td {
+
+	position: absolute;
+	top: 5%;
+	left: 0;
+
+}
+
+div.news_td h3 {
+
+	margin: 0;
+	margin-top: 2px;
+	padding: 5px;
+	background-color: rgba(43, 40, 95, 0.75);
+	color: #fff;
+	font-size: 1.5em;
+
+}
+
+img.news_img {
+
+	cursor: pointer;
+
+}
+
+div.news_dots {
+
+	position: absolute;
+	bottom: 5%;
+	right: 0;
+	padding: 25px;
+
+}
+
+div.news_dots i {
+
+	color: #fff;
+	font-size: 1.25em;
+	padding-right: 5px;
+	cursor: pointer;
+
+}

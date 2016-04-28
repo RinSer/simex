@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { Reactive } from 'meteor/reactive-var';
 
@@ -20,21 +21,21 @@ Template.news.helpers({
 Template.each_news.onCreated(function() {
 
 	this.slideCounter = new ReactiveVar(0);
-	this.untouched = new ReactiveVar(true);
+	this.slide = new ReactiveVar(null);
 	const items = this.data.photos.length;
 
-	function increment_counter() {
+	const interval = Math.floor(Math.random()*(8-3))+3;
 
-		
-	}
+	this.slide.set(Meteor.setInterval(() => {
 
-	};
+		if (this.slideCounter.get() < items-1) {
+			this.slideCounter.set(this.slideCounter.get()+1);
+		}
+		else {
+			this.slideCounter.set(0);
+		}
 
-	while (this.untouched.get()) {
-
-		if ()
-
-	}
+	}, interval*1000));
 
 });
 
@@ -46,7 +47,6 @@ Template.each_news.helpers({
 		const photos_total = Template.instance().data.photos.length;
 		const photos = Template.instance().data.photos;
 
-		console.log(photos[current_photo_number]);
 		return photos[current_photo_number];
 
 	}
@@ -55,11 +55,24 @@ Template.each_news.helpers({
 
 Template.each_news.events({
 
-	'click h2':function(event, template) {
+	'click .news':function(event, template) {
 
 		event.preventDefault();
 
-		console.log(template);
+		Meteor.clearInterval(template.slide.get());
+
+	},
+
+	'click .news_img':function(event, template) {
+
+		event.preventDefault();
+
+		if (template.slideCounter.get() < template.data.photos.length-1) {
+			template.slideCounter.set(template.slideCounter.get()+1);
+		}
+		else {
+			template.slideCounter.set(0);
+		}
 
 	}
 
