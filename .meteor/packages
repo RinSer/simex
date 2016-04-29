@@ -21,3 +21,6 @@ fortawesome:fontawesome # Easily add fontawesome icons
 accounts-password		# Authentification
 session
 iron:router
+aldeed:simple-schema
+aldeed:collection2
+templates:array

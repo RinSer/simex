@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-import { Reactive } from 'meteor/reactive-var';
+import { ReactiveVar } from 'meteor/reactive-var';
+import { ReactiveArray } from 'meteor/templates:array';
 
 Template.news.onCreated(function() {
 
@@ -8,12 +9,46 @@ Template.news.onCreated(function() {
 		this.subscribe('newsData');
 	});
 
+	this.addNews = new ReactiveVar(false);
+
 });
 
 Template.news.helpers({
 
 	news:function() {
 		return News.find({});
+	},
+
+	admin:function() {
+
+		if (Meteor.user()) {
+
+			if (Meteor.user().admin)
+				return true;
+
+		}
+
+		return false;
+
+	},
+
+	add_news:function() {
+
+		return Template.instance().addNews.get();
+
+	}
+
+});
+
+Template.news.events({
+
+
+	'click .news_add':function(event, template) {
+
+		event.preventDefault();
+
+		template.addNews.set(!template.addNews.get());
+
 	}
 
 });
@@ -29,13 +64,23 @@ Template.each_news.onCreated(function() {
 	this.slide.set(Meteor.setInterval(() => {
 
 		if (this.slideCounter.get() < items-1) {
+			$('.'+this.data._id+' i.fa-circle').addClass('fa-circle-o').removeClass('fa-circle');
 			this.slideCounter.set(this.slideCounter.get()+1);
+			$('.'+this.data._id+' i.'+this.slideCounter.get()).removeClass('fa-circle-o').addClass('fa-circle');
 		}
 		else {
+			$('.'+this.data._id+' i.fa-circle').addClass('fa-circle-o').removeClass('fa-circle');
 			this.slideCounter.set(0);
+			$('.'+this.data._id+' i.'+this.slideCounter.get()).removeClass('fa-circle-o').addClass('fa-circle');
 		}
 
 	}, interval*1000));
+
+});
+
+Template.each_news.onRendered(function() {
+
+	$('.'+this.data._id+' i.'+this.slideCounter.get()).removeClass('fa-circle-o').addClass('fa-circle');
 
 });
 
@@ -48,6 +93,19 @@ Template.each_news.helpers({
 		const photos = Template.instance().data.photos;
 
 		return photos[current_photo_number];
+
+	},
+
+	admin:function() {
+
+		if (Meteor.user()) {
+
+			if (Meteor.user().admin)
+				return true;
+
+		}
+
+		return false;
 
 	}
 
@@ -67,12 +125,131 @@ Template.each_news.events({
 
 		event.preventDefault();
 
+		Meteor.clearInterval(template.slide.get());
+
 		if (template.slideCounter.get() < template.data.photos.length-1) {
+			$('.'+template.data._id+' i.fa-circle').addClass('fa-circle-o').removeClass('fa-circle');
 			template.slideCounter.set(template.slideCounter.get()+1);
+			$('.'+template.data._id+' i.'+template.slideCounter.get()).removeClass('fa-circle-o').addClass('fa-circle');
 		}
 		else {
+			$('.'+template.data._id+' i.fa-circle').addClass('fa-circle-o').removeClass('fa-circle');
 			template.slideCounter.set(0);
+			$('.'+template.data._id+' i.'+template.slideCounter.get()).addClass('fa-circle');
 		}
+
+	},
+
+	'click .news_dot':function(event, template) {
+
+		event.preventDefault();
+
+		Meteor.clearInterval(template.slide.get());
+
+		const current_dot = event.currentTarget.getAttribute('class')[0];
+
+		$('.'+template.data._id+' i.fa-circle').addClass('fa-circle-o').removeClass('fa-circle');
+		template.slideCounter.set(current_dot);
+		$('.'+template.data._id+' i.'+template.slideCounter.get()).addClass('fa-circle');
+
+	},
+
+	'click .news_remove':function(event, template) {
+
+		event.preventDefault();
+
+		Meteor.call('deleteNews', template.data._id, function(err, data) {
+
+			if (err)
+				console.log(err);
+
+		});
+
+	}
+
+});
+
+Template.new_news.onCreated(function() {
+
+	this.addPhoto = new ReactiveVar(false);
+	this.photos = new ReactiveArray();
+
+});
+
+Template.new_news.helpers({
+
+	add_photo:function() {
+
+		return Template.instance().addPhoto.get();
+
+	},
+
+	photos:function() {
+
+		return Template.instance().photos.get();
+
+	}
+
+});
+
+Template.new_news.events({
+
+	'click button.news_add_photo':function(event, template) {
+
+		event.preventDefault();
+
+		template.addPhoto.set(!template.addPhoto.get());
+
+	},
+
+	'submit form.photo':function(event, template) {
+
+		event.preventDefault();
+
+		const description = event.target.description.value;
+		const url = event.target.url.value;
+		const text = event.target.text.value;
+
+		template.photos.push({description, url, text});
+
+	},
+
+	'click .news_delete_photo':function(event, template) {
+
+		event.preventDefault();
+
+		const index = event.currentTarget.getAttribute('class')[0];
+
+		template.photos.pop(index);
+
+	},
+
+	'click .news_save':function(event, template) {
+
+		event.preventDefault();
+
+		const title = template.find('[name=title]').value;
+		const date = new Date();
+
+		const doc = {
+
+			title: title,
+			photos: template.photos.get(),
+			createdAt: date
+
+		};
+
+		Meteor.call('addNews', doc, function(err, data) {
+
+			if (!err) {
+				template.photos = new ReactiveArray();
+				template.addPhoto.set(false);
+			}
+			else {
+				console.log(err);
+			}
+
+		});
 
 	}
 

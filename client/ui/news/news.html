@@ -2,6 +2,15 @@
 
 	{{> news_quote}}
 
+	{{#if admin}}
+		<h1 class="news_add"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Добавить новость</h1>
+	
+
+		{{#if add_news}}
+			{{> new_news}}
+		{{/if}}
+	{{/if}}
+
 	{{#each news}}
 		{{> each_news}}	
 	{{/each}}
@@ -27,13 +36,45 @@
 				<h3>{{photo.description}}</h3>
 			</div>
 			<img class="news_img" src="{{photo.url}}" width="100%">
-			<div class="news_dots">
+			<div class="news_dots {{_id}}">
 				{{#each photos}}
-					<i class="fa fa-circle-o" aria-hidden="true"></i>
+					<i class="{{@index}} fa fa-circle-o news_dot" aria-hidden="true"></i>
 				{{/each}}
 			</div>
 		</section>
 		<p>{{photo.text}}</p>
+		{{#if admin}}
+			<button class="news_remove">Удалить новость</button>
+		{{/if}}
+	</section>
+
+</template>
+
+<template name="new_news">
+
+	<section class="news_form">
+		
+			<input type="text" name="title" value="Заголовок новости">
+			<br>
+			<button class="news_add_photo">Добавить фото с описанием</button>
+			<button class="news_save">Сохранить</button>
+			<br>
+			{{#if add_photo}}
+				<form class="photo">
+					<input type="text" name="description" value="Заголовок фото">
+					<input type="text" name="url" value="http://photourl">
+					<input type="text" name="text" value="Описание фото">
+					<input class="add_photo" type="submit" value="Добавить фото">
+				</form>
+			{{/if}}
+			{{#each photos}}
+				<div class="news_added_photo">
+					<i class="{{@index}} fa fa-times news_delete_photo" aria-hidden="true"></i>
+					<span>{{description}}</span>
+					<img src="{{url}}" width="50px">
+				</div>
+			{{/each}}
+		
 	</section>
 
 </template>

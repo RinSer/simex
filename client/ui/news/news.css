@@ -69,3 +69,112 @@ div.news_dots i {
 	cursor: pointer;
 
 }
+
+/*** Admin components ***/
+h1.news_add {
+
+	text-align: right;
+	color: #ff0000;
+	border: 2px solid #ff0000;
+	padding: 5px;
+	cursor: pointer;
+
+}
+
+h1.news_add:hover {
+
+	background-color: #2b285f;
+
+}
+
+h1.news_add:active {
+
+	border: 1px solid #fff;
+
+}
+
+button.news_remove {
+
+	float: right;
+	border: none;
+	background-color: #ff0000;
+	color: #fff;
+	font-size: 1.25em;
+	padding: 5px;
+	cursor: pointer;
+
+}
+
+button.news_remove:hover {
+
+	color: #2b285f;
+
+}
+
+button.news_remove:active {
+
+	border: 1px solid #2b285f;
+
+}
+
+section.news_form {
+
+	margin: 0 0 75px 0;
+	padding: 25px;
+	text-align: center;
+
+}
+
+section.news_form input {
+
+	width: 80%;
+	font-size: 1.2em;
+	color: #333;
+	padding: 2px;
+
+}
+
+.news_add_photo {
+
+	background-color: #2b285f;
+	color: #fff;
+	font-size: 1.2em;
+	clear: both;
+
+}
+
+.news_save {
+
+	background-color: #fff;
+	color: #333;
+	font-size: 1.2em;
+	clear: both;
+
+}
+
+.add_photo {
+
+	background-color: #fff;
+
+}
+
+.news_added_photo {
+
+	margin: 10px;
+	float: left;
+
+}
+
+.news_added_photo i {
+
+	float: right;
+	color: red;
+	cursor: pointer;
+
+}
+
+.news_added_photo i:hover {
+
+	color: rgba(255, 0, 0, 0.5);
+
+}
