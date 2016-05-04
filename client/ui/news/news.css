@@ -18,6 +18,7 @@ section.news_with_text {
 	margin-bottom: 5%;
 	padding-bottom: 5%;
 	border-bottom: 1px solid #2b285f;
+	clear: both;
 
 }
 
@@ -49,6 +50,25 @@ div.news_td h3 {
 img.news_img {
 
 	cursor: pointer;
+
+}
+
+a.news_link {
+
+	position: absolute;
+	bottom: 25%;
+	right: 0;
+	padding: 5px;
+	font-size: 1.5em;
+	color: #fff;
+	text-decoration: none;
+	background-color: rgba(255, 0, 0, 0.75);
+
+}
+
+a.news_link:hover {
+
+	text-decoration: underline;
 
 }
 
@@ -107,7 +127,7 @@ button.news_remove {
 
 button.news_remove:hover {
 
-	color: #2b285f;
+	color: #333;
 
 }
 
@@ -131,6 +151,12 @@ section.news_form input {
 	font-size: 1.2em;
 	color: #333;
 	padding: 2px;
+
+}
+
+section.news_form input.checkbox {
+
+	width: 5%;
 
 }
 

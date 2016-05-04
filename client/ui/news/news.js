@@ -16,7 +16,7 @@ Template.news.onCreated(function() {
 Template.news.helpers({
 
 	news:function() {
-		return News.find({});
+		return News.find({}, {sort: {createdAt: -1}});
 	},
 
 	admin:function() {
@@ -48,6 +48,35 @@ Template.news.events({
 		event.preventDefault();
 
 		template.addNews.set(!template.addNews.get());
+
+	}
+
+});
+
+Template.news_quote.onCreated(function() {
+
+	this.autorun(() => {
+		this.subscribe('newsSloganData');
+	});
+
+});
+
+Template.news_quote.helpers({
+
+	slogan:function() {
+		if (NewsSlogan.findOne())
+			return NewsSlogan.findOne();
+		else
+			return {title: false, quote: false, text: false};
+	},
+
+	optionsHelper:function() {
+
+		return {
+			collection: "newsslogan",
+			wysiwyg: true,
+			title: "Кликни, чтобы редактировать"
+		};
 
 	}
 
@@ -115,15 +144,11 @@ Template.each_news.events({
 
 	'click .news':function(event, template) {
 
-		event.preventDefault();
-
 		Meteor.clearInterval(template.slide.get());
 
 	},
 
 	'click .news_img':function(event, template) {
-
-		event.preventDefault();
 
 		Meteor.clearInterval(template.slide.get());
 
@@ -174,6 +199,12 @@ Template.new_news.onCreated(function() {
 	this.addPhoto = new ReactiveVar(false);
 	this.photos = new ReactiveArray();
 
+	$(document).keyup(function(event) {
+
+		event.preventDefault();
+
+	});
+
 });
 
 Template.new_news.helpers({
@@ -220,15 +251,24 @@ Template.new_news.events({
 
 		const index = event.currentTarget.getAttribute('class')[0];
 
-		template.photos.pop(index);
+		template.photos.splice(index, 1);
 
 	},
 
 	'click .news_save':function(event, template) {
 
-		event.preventDefault();
-
 		const title = template.find('[name=title]').value;
+
+		let link = null;
+		if (template.find('[name=link]').checked) {
+			const link_url = template.find('[name=link_url]').value;
+			const link_text = template.find('[name=link_text]').value;
+			link = {
+				url: link_url,
+				text: link_text
+			};
+		}
+
 		const date = new Date();
 
 		const doc = {
@@ -238,6 +278,10 @@ Template.new_news.events({
 			createdAt: date
 
 		};
+
+		if (link) {
+			doc.link = link;
+		}
 
 		Meteor.call('addNews', doc, function(err, data) {
 
@@ -250,6 +294,8 @@ Template.new_news.events({
 			}
 
 		});
+
+		document.location.reload(true);
 
 	}
 

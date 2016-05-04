@@ -1,0 +1,28 @@
+section.about {
+
+	margin-top: 3%;
+
+}
+
+section.about h2 {
+
+	font-size: 1.5em;
+	text-align: center;
+
+}
+
+section.about div {
+
+	margin: 5% auto;
+	padding: 25px;
+	background-color: #2b285f;
+	color: #fff;
+	border-radius: 8px;
+
+}
+
+section.about h3 {
+
+	text-align: right;
+
+}

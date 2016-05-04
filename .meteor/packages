@@ -24,3 +24,4 @@ iron:router
 aldeed:simple-schema
 aldeed:collection2
 templates:array
+babrahams:editable-text

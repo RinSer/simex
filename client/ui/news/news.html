@@ -20,9 +20,9 @@
 <template name="news_quote">
 
 	<section class="quote">
-	    <h2>БИОМОДЕЛИ &laquo;ЛИДЕРЫ ПРОДАЖ&raquo;</h2>
-	    <blockquote style="text-align: right;">Откройте для себя самые актуальные тренажеры!</blockquote>
-	    <p>В наших тренажерах мы используем современные научные разработки для создания самых актуальных патологий!</p>
+	    <h2>{{> editableText context=slogan options=optionsHelper field="title"}}</h2>
+	    <blockquote style="text-align: right;">{{> editableText context=slogan options=optionsHelper field="quote"}}</blockquote>
+	    <p>{{> editableText context=slogan options=optionsHelper field="text"}}</p>
 	</section>
 
 </template>
@@ -36,6 +36,9 @@
 				<h3>{{photo.description}}</h3>
 			</div>
 			<img class="news_img" src="{{photo.url}}" width="100%">
+			{{#if link}}
+				<a href="{{link.url}}" target="_blank" class="news_link">{{link.text}}</a>
+			{{/if}}
 			<div class="news_dots {{_id}}">
 				{{#each photos}}
 					<i class="{{@index}} fa fa-circle-o news_dot" aria-hidden="true"></i>
@@ -55,6 +58,11 @@
 	<section class="news_form">
 		
 			<input type="text" name="title" value="Заголовок новости">
+			<br>
+			<input class="checkbox" type="checkbox" name="link" check="unchecked">Добавить ссылку на сайт партнера<br>
+			<input type="text" name="link_url" value="Адрес ссылки">
+			<br>
+			<input type="text" name="link_text" value="Текст ссылки">
 			<br>
 			<button class="news_add_photo">Добавить фото с описанием</button>
 			<button class="news_save">Сохранить</button>

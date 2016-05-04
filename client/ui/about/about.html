@@ -1,0 +1,12 @@
+<template name="about">
+
+	<section class="about">
+		<h2>{{> editableText context=about options=optionsHelper field="title"}}</h2>
+		<p>{{> editableText context=about options=optionsHelper field="text"}}</p>
+		<div>
+			<h3>{{> editableText context=about options=optionsHelper field="quote.person"}}</h3>
+			<p>{{> editableText context=about options=optionsHelper field="quote.text"}}</p>
+		</div>
+	</section>
+
+</template>

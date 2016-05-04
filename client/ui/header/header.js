@@ -61,15 +61,11 @@ Template.header.events({
 
 	'click .logout':function(event, template) {
 
-		event.preventDefault();
-
 		Meteor.logout();
 
 	},
 
 	'click .mob_menu_button':function(event, template) {
-
-		event.preventDefault();
 
 		$('nav > ul').toggle('slow');
 
