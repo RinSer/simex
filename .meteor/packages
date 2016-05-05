@@ -25,3 +25,4 @@ aldeed:simple-schema
 aldeed:collection2
 templates:array
 babrahams:editable-text
+dburles:google-maps		# Google Maps Javascript API v3

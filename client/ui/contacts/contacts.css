@@ -1,0 +1,165 @@
+section.contacts {
+
+	clear: both;
+	margin-top: 3%;
+	padding-bottom: 25%;
+
+}
+
+section.contacts h2 {
+
+	clear: both;
+	font-size: 2.5em;
+	text-align: center;
+	padding-top: 50px;
+
+}
+
+section.contacts h3 {
+
+	font-size: 1.5em;
+
+}
+
+section.contacts p {
+
+	font-size: 1.2em;
+
+}
+
+section.contacts ul {
+
+	list-style: none;
+	padding-left: 10%;
+	font-size: 1.25em;
+	margin-top: 30px;
+
+}
+
+section.contacts ul li {
+
+	padding: 5px;
+
+}
+
+section.contacts a {
+
+	text-decoration: none;
+	color: #333;
+
+}
+
+section.contacts a:hover {
+
+	color: #ff0000;
+
+}
+
+button.contacts_reload {
+
+	font-size: 1.2em;
+	background-color: #fff;
+	color: #333;
+	margin-bottom: 5px;
+	cursor: pointer;
+
+}
+
+.map-container {
+  width: 800px;
+  max-width: 100%;
+  height: 350px;
+}
+
+div.contacts-sm-2 {
+
+	float: left;
+	padding: 10px;
+
+}
+
+@media (min-width: 769px) {
+
+	div.contacts-sm-2 {
+
+		width: 50%;
+
+	}
+
+}
+
+@media (max-width: 768px) {
+
+	div.contacts-sm-2 {
+
+		width: 100%;
+
+	}
+
+}
+
+form.contact_form {
+
+	width: 90%;
+	margin: 0 auto;
+	color: #333;
+
+}
+
+form.contact_form label {
+
+	padding: 5px;
+	font-size: 1.1em;
+	color: #333;
+
+}
+
+form.contact_form input {
+
+	padding: 5px;
+	font-size: 1.1em;
+	width: 90%;
+	color: #333;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+
+}
+
+form.contact_form textarea {
+
+	padding: 10px;
+	font-size: 1.1em;
+	width: 90%;
+	color: #333;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+
+}
+
+form.contact_form select {
+
+	padding: 5px;
+	font-size: 1.1em;
+	width: 90%;
+	background-color: #fff;
+	color: #333;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+
+}
+
+form.contact_form button {
+
+	background-color: #fff;
+	font-size: 1.1em;
+	color: #333;
+	padding: 5px;
+	border-radius: 4px;
+
+}
+
+.alert-note {
+
+	color: #ff0000;
+
+}

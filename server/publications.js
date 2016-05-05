@@ -39,3 +39,17 @@ Meteor.publish('aboutData', function() {
 	return About.find({}, {fields: {title: 1, text: 1, quote: 1}});
 
 });
+
+// Publish Validity data
+Meteor.publish('validityData', function() {
+
+	return Validity.find({}, {fields: {title: 1, text: 1, reference_title: 1, references: 1}});
+
+});
+
+// Publish Contacts data
+Meteor.publish('contactsData', function() {
+
+	return Contacts.find({}, {fields: {address: 1, email: 1, tel: 1, web: 1, location: 1}});
+
+});

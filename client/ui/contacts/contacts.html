@@ -1,0 +1,103 @@
+<template name="contacts">
+
+	<section class="contacts">
+		<div class="contacts-sm-2">
+			<h3>Наш адрес:</h3>
+			<p>{{> editableText context=contacts options=optionsHelper field="address"}}</p>
+			{{#unless admin}}
+			<ul>
+				<li><a href="mailto:{{contacts.email}}">
+					<i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;
+					{{contacts.email}}
+				</a></li>
+				<li><a href="tel:{{contacts.tel}}">
+					<i class="fa fa-phone" aria-hidden="true"></i>&nbsp;
+					{{contacts.tel}}
+				</a></li>
+				<li><a href="http://{{contacts.web}}" target="_blank">
+					<i class="fa fa-globe" aria-hidden="true"></i>&nbsp;
+					{{contacts.web}}
+				</a></li>
+			</ul>
+			{{else}}
+			<ul>
+				<li>
+					<i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;
+					{{> editableText context=contacts options=optionsHelper field="email"}}
+				</li>
+				<li>
+					<i class="fa fa-phone" aria-hidden="true"></i>&nbsp;
+					{{> editableText context=contacts options=optionsHelper field="tel"}}
+				</li>
+				<li>
+					<i class="fa fa-globe" aria-hidden="true"></i>&nbsp;
+					{{> editableText context=contacts options=optionsHelper field="web"}}
+				</li>
+			</ul>
+			<h3>Координаты на карте:</h3>
+			<p>Широта:&nbsp;
+				{{> editableText context=contacts options=optionsHelper field="location.latitude"}}
+			</p>
+			<p>Долгота:&nbsp;
+				{{> editableText context=contacts options=optionsHelper field="location.longitude"}}
+			</p>
+			<button class="contacts_reload">Обновить</button>
+			{{/unless}}
+		</div>
+		<div class="contacts-sm-2">
+			<div class="map-container">
+				{{> googleMap name="simexMap" options=mapOptions}}
+			</div>
+		</div>
+		
+		{{> contact_form}}
+	</section>
+
+</template>
+
+<template name="contact_form">
+
+	<form class="contact_form">
+		<h2>Контактная форма</h2>
+		<p>Пожалуйста, заполните форму ниже, чтобы связаться с нами.</p>
+		<label for="surname">Фамилия<span class="alert-note">*</span></label>
+		<br>
+		<input type="text" class="form-control" id="surname" placeholder="Фамилия">
+		<br><br>
+		<label for="name">Имя<span class="alert-note">*</span></label>
+		<br>
+		<input type="text" class="form-control" id="name" placeholder="Имя">
+		<br><br>
+		<label for="2ndname">Отчество</label>
+		<br>
+		<input type="text" class="form-control" id="2ndname" placeholder="Отчество">
+		<br><br>
+		<label for="email">Адрес электронной почты<span class="alert-note">*</span></label>
+		<br>
+		<input type="text" class="form-control" id="email" placeholder="Адрес электронной почты">
+		<br><br>
+		<label for="telephone">Телефон</label>
+		<br>
+		<input type="text" class="form-control" id="telephone" placeholder="Телефон">
+		<br><br>
+		<label for="theme">Тема<span class="alert-note">*</span></label>
+		<br>
+		<select class="form-control" id="theme">
+			<option>вопрос по продукту</option>
+			<option>сотрудничество</option>
+			<option>вопрос по услугам</option>
+			<option>другое</option>
+		</select>
+		<br><br>
+		<label for="message">Сообщение<span class="alert-note">*</span></label>
+		<br>
+		<textarea class="form-control" rows="10" id="message"></textarea>
+		<br><br>
+		<button type="submit">Отправить</button>
+		<br>
+		<div id="submission_error">
+			<h4 class="alert-note">* Пожалуйста, заполните все необходимые поля.</h4>
+		</div>
+	</form>
+
+</template>

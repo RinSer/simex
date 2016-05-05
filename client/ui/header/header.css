@@ -1,5 +1,11 @@
 /*** Header ***/
 
+.active {
+
+	color: #ff0000;
+
+}
+
 div.admin_panel {
 
 	background-color: #333;
@@ -147,6 +153,12 @@ nav a:hover {
 @media (min-width: 768px) {
 
 	div.mobile_menu {
+
+		display: none;
+
+	}
+
+	ul.mobile_login {
 
 		display: none;
 

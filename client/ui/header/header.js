@@ -11,6 +11,22 @@ Template.header.onCreated(function() {
 	
 });
 
+Template.header.onRendered(function() {
+
+	$('nav a').click(function() {
+		$('.active').removeClass('active');
+		$(this).addClass('active');
+		if ($(window).width() < 768) {
+			$('nav > ul').toggle('slow');
+		}
+	});
+
+	$('.mob_menu_button').click(function() {
+		$('nav > ul').toggle('slow');
+	});
+
+});
+
 Template.header.helpers({
 
 	user_name:function() {
@@ -62,12 +78,6 @@ Template.header.events({
 	'click .logout':function(event, template) {
 
 		Meteor.logout();
-
-	},
-
-	'click .mob_menu_button':function(event, template) {
-
-		$('nav > ul').toggle('slow');
 
 	}
 

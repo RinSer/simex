@@ -43,12 +43,22 @@
 			<button class="mob_menu_button">Меню</button>
 		</div>
 		<ul>
-			<li><a href="/">НОВОСТИ</a></li>
+			<li><a class="active" href="/">НОВОСТИ</a></li>
 			<li><a href="/about">О КОМПАНИИ</a></li>
 			<li><a href="#">БИОМОДЕЛИ</a></li>
 			<li><a href="#">ПРОДУКЦИЯ</a></li>
-			<li><a href="#">ВАЛИДНОСТЬ</a></li>
-			<li><a href="#">КОНТАКТЫ</a></li>
+			<li><a href="/validity">ВАЛИДНОСТЬ</a></li>
+			<li><a href="/contacts">КОНТАКТЫ</a></li>
+		</ul>
+		<ul class="mobile_login">
+			<li><span class="upper_hover"><i class="fa fa-cart-arrow-down"></i>Оформить заказ</span></li>
+			{{#unless currentUser}}
+				<li><span class="upper_hover modal_on register"><i class="fa fa-user-plus"></i>Зарегистрироваться&nbsp;</span></li>
+				<li><span class="upper_hover modal_on login"><i class="fa fa-sign-in"></i>Войти</span></li>
+			{{else}}
+				<li><span class="upper_hover"><i class="fa fa-user-md"></i>&nbsp;{{user_name}}&nbsp;</span></li>
+				<li><span class="upper_hover logout"><i class="fa fa-sign-out"></i>Выйти</span></li>
+			{{/unless}}
 		</ul>
 
 	</nav>
