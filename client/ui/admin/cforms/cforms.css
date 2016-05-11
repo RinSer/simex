@@ -1,0 +1,109 @@
+section.cforms h2 {
+
+	text-align: center;
+	font-size: 1.75em;
+
+}
+
+section.cforms ul li {
+
+	list-style: none;
+	display: inline;
+	padding: 10px;
+	border: 1px solid #333;
+	border-radius: 4px;
+	cursor: pointer;
+
+}
+
+section.cforms li:hover {
+
+	border-color: #ff0000;
+	color: #ff0000;
+
+}
+
+li.current {
+
+	background-color: #2b285f;
+	color: #fff;
+
+}
+
+section.cforms table {
+
+	margin: 50px auto;
+	width: 100%;
+	text-align: center;
+
+}
+
+section.cforms td {
+
+	padding: 5px;
+	border: 1px solid #aaa;
+	border-radius: 2px;
+
+}
+
+section.cforms tr:hover {
+
+	color: #ff0000;
+
+}
+
+section.cforms a {
+
+	color: #2b285f;
+
+}
+
+section.cforms a:hover {
+
+	color: #ff0000;
+
+}
+
+section.cform {
+
+	margin: 25px auto;
+
+}
+
+a.back {
+
+	text-decoration: none;
+	color: #aaa;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	padding: 5px;
+
+}
+
+a.back:hover {
+
+	color: #ff0000;
+	border-color: #ff0000;
+
+}
+
+section.cform div {
+
+	margin: 25px auto;
+	padding: 10px;
+	border: 1px solid #333;
+
+}
+
+.processed {
+
+	float: right;
+
+}
+
+section.cform h2 {
+
+	clear: both;
+
+}
+

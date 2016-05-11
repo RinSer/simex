@@ -32,6 +32,19 @@ p {
 
 }
 
+a {
+
+	text-decoration: none;
+	color: #aaa;
+
+}
+
+a:hover {
+
+	color: #ff0000;
+
+}
+
 ul {
 
 	padding: 0;

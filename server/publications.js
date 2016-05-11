@@ -53,3 +53,35 @@ Meteor.publish('contactsData', function() {
 	return Contacts.find({}, {fields: {address: 1, email: 1, tel: 1, web: 1, location: 1}});
 
 });
+
+// Publish Cforms data
+Meteor.publish('cformsData', function() {
+
+	return Cforms.find({}, {fields: {
+		user: 1,
+		familyName: 1,
+		firstName: 1,
+		secondName: 1,
+		email: 1,
+		tel: 1,
+		theme: 1,
+		message: 1,
+		processed: 1,
+		createdAt: 1
+	}, sort: {createdAt: -1}});
+
+});
+
+// Publish cforms data for each user
+Meteor.publish('userCforms', function(userId) {
+
+	return Cforms.find({user: userId}, {fields: {_id: 1, user: 1, theme: 1}, sort: {createdAt: -1}});
+
+});
+
+// Publish users data for admin
+Meteor.publish('usersData', function() {
+
+	return Meteor.users.find({}, {fields: {name: 1, emails: 1, address: 1, admin: 1}});
+
+});

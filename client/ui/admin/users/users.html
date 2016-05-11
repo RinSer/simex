@@ -1,0 +1,97 @@
+<template name="users">
+
+	<section class="users">
+		<ul>
+			<li class="current users">Пользователи</li>
+			<li class="admins">Админы</li>
+		</ul>
+		{{#if admins}}
+			<h3><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Добавить администратора</h3>
+			<div class="new_admin">
+				<p><span class="register_error">Ошибка!</span></p>
+				<form class="add_admin">
+					<label for="name">Имя</label>
+					<br>
+					<input type="text" id="name" name="name">
+					<br>
+					<label for="email">Email</label>
+					<br>
+					<input type="email" id="email" name="email">
+					<br>
+					<label for="password">Пароль</label>
+					<br>
+					<input type="password" id="password" name="password">
+					<br>
+					<label for="password_check">Повторите</label>
+					<br>
+					<input type="password" id="password_check" name="password_check">
+					<br><br>
+					<input class="submit" type="submit" value="Сохранить">
+					<br>
+					<p><span class="login_error">Не совпадают пароль и подтверждение!</span></p>
+				</form>
+			</div>
+		{{/if}}
+		<div style="overflow-x: auto;">
+			<table>
+				<tr>
+					<th>Имя</th>
+					<th>Email</th>
+					{{#unless admins}}
+						<th>Адрес</th>
+						<th>Заказы</th>
+						<th>Формы</th>
+					{{/unless}}
+				</tr>
+				{{#each users}}
+				<tr>
+					{{#unless admins}}
+						{{> user_row}}
+					{{else}}
+						{{> admin_row}}
+					{{/unless}}
+				</tr>
+				{{/each}}
+			</table>
+		</div>
+	</section>
+
+</template>
+
+<template name="user_row">
+
+	<td>{{name}}</td>
+	<td>
+	{{#each emails}}
+		{{address}}&nbsp;
+	{{/each}}
+	</td>
+	<td>{{address}}</td>
+	{{#if orders}}
+		<td></td>
+	{{else}}
+		<td>Нет</td>
+	{{/if}}
+	{{#if forms}}
+		<td>
+			{{#each forms}}
+				<a href="/cforms/{{_id}}">{{theme}}</a><br>
+			{{/each}}
+		</td>
+	{{else}}
+		<td>Нет</td>
+	{{/if}}
+
+</template>
+
+<template name="admin_row">
+
+	<td>{{name}}</td>
+	<td>
+	{{#each emails}}
+		{{address}}&nbsp;
+	{{/each}}
+	</td>
+	<td class="delete_admin">Удалить</td>
+
+</template>

@@ -51,6 +51,9 @@
 		</div>
 		
 		{{> contact_form}}
+
+		<p class="contact_form_sent">Ваша форма успешно отправлена!</p>
+		
 	</section>
 
 </template>
@@ -62,27 +65,27 @@
 		<p>Пожалуйста, заполните форму ниже, чтобы связаться с нами.</p>
 		<label for="surname">Фамилия<span class="alert-note">*</span></label>
 		<br>
-		<input type="text" class="form-control" id="surname" placeholder="Фамилия">
+		<input type="text" class="form-control" id="surname" name="surname" placeholder="Фамилия">
 		<br><br>
 		<label for="name">Имя<span class="alert-note">*</span></label>
 		<br>
-		<input type="text" class="form-control" id="name" placeholder="Имя">
+		<input type="text" class="form-control" id="name" name="name" placeholder="Имя">
 		<br><br>
 		<label for="2ndname">Отчество</label>
 		<br>
-		<input type="text" class="form-control" id="2ndname" placeholder="Отчество">
+		<input type="text" class="form-control" id="sndname" name="sndname" placeholder="Отчество">
 		<br><br>
 		<label for="email">Адрес электронной почты<span class="alert-note">*</span></label>
 		<br>
-		<input type="text" class="form-control" id="email" placeholder="Адрес электронной почты">
+		<input type="email" class="form-control" id="email" name="email" placeholder="Адрес электронной почты">
 		<br><br>
 		<label for="telephone">Телефон</label>
 		<br>
-		<input type="text" class="form-control" id="telephone" placeholder="Телефон">
+		<input type="text" class="form-control" id="telephone" name="tel" placeholder="Телефон">
 		<br><br>
 		<label for="theme">Тема<span class="alert-note">*</span></label>
 		<br>
-		<select class="form-control" id="theme">
+		<select class="form-control" id="theme" name="theme">
 			<option>вопрос по продукту</option>
 			<option>сотрудничество</option>
 			<option>вопрос по услугам</option>
@@ -91,7 +94,7 @@
 		<br><br>
 		<label for="message">Сообщение<span class="alert-note">*</span></label>
 		<br>
-		<textarea class="form-control" rows="10" id="message"></textarea>
+		<textarea class="form-control" rows="10" id="message" name="message"></textarea>
 		<br><br>
 		<button type="submit">Отправить</button>
 		<br>

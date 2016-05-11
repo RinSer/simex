@@ -84,3 +84,68 @@ Template.contacts.events({
 	}
 
 });
+
+Template.contact_form.events({
+
+	'submit form.contact_form':function(event, template) {
+
+		event.preventDefault();
+
+		const surname = event.target.surname.value;
+		const name = event.target.name.value;
+		const sndname = event.target.sndname.value;  // Optional
+		const email = event.target.email.value;
+		const tel = event.target.tel.value;  // Optional
+		const theme = event.target.theme.value;
+		const message = event.target.message.value;
+		const date = new Date();
+
+		// Add form to app DB
+		let form = {
+			familyName: surname,
+			firstName: name,
+			email: email,
+			theme: theme,
+			message: message,
+			processed: false,
+			createdAt: date
+		}
+
+		if (sndname) form.secondName = sndname;
+		if (tel) form.tel = tel;
+		if (Meteor.userId()) form.user = Meteor.userId();
+
+		// Send form to email
+
+		if (surname && name && email && theme && message) {
+
+			let signed_message = message+"\n\n"+name+" "+sndname+" "+surname+", "+date;
+			if (tel) {
+				signed_message += ", тел."+tel;
+			}
+
+			const mail = {
+				to: "serj.dukareff@gmail.com",
+				from: email,
+				subject: "Контактная форма: "+theme,
+				text: signed_message
+			}
+
+			// Send form to the DB and email
+			Meteor.call('addCform', form);
+			//Meteor.call('sendEmail', mail);
+
+			// Clear form and show alert note
+			template.find('form.contact_form').reset();
+			$('.alert-note').hide();
+			$('p.contact_form_sent').show();
+
+		}
+		else {
+			$('.alert-note').show();
+			$('p.contact_form_sent').hide();
+		}
+		
+	}
+
+});

@@ -1,14 +1,12 @@
 <template name="header">
 
 	{{#if admin}}
-		<div class="admin_panel">
-			<p>Hello, admin!</p>
-		</div>
+		{{> admin_panel}}
 	{{/if}}
 
 	<div class="upper_header">
 		<section class="col-tm-3">
-			<a href="/"><img src="simex_logo.png" alt="Simex_logo" height="100px" class="logo_img"></a>
+			<a id="logo_img" href="/"><img src="simex_logo.png" alt="Simex_logo" height="100px" class="logo_img"></a>
 		</section>
 		<section class="col-tm-3">
 			<div class="top_search">
@@ -20,7 +18,7 @@
 		</section>
 		<section class="col-tm-3">
 			<div class="cart_login">
-				<p><span class="upper_hover"><i class="fa fa-cart-arrow-down"></i>Оформить заказ</span></p>
+				<p><span class="upper_hover cart"><i class="fa fa-cart-arrow-down"></i>Оформить заказ</span></p>
 				{{#unless currentUser}}
 					<p>
 						<span class="upper_hover modal_on register"><i class="fa fa-user-plus"></i>Зарегистрироваться&nbsp;</span>
@@ -45,8 +43,18 @@
 		<ul>
 			<li><a class="active" href="/">НОВОСТИ</a></li>
 			<li><a href="/about">О КОМПАНИИ</a></li>
-			<li><a href="#">БИОМОДЕЛИ</a></li>
-			<li><a href="#">ПРОДУКЦИЯ</a></li>
+			<li>
+				<a class="biomodels" href="#">БИОМОДЕЛИ&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i></a>
+
+			</li>
+			<li>
+				<a class="products" href="#">ПРОДУКЦИЯ&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i></a>
+				<ul class="products_ref">
+					<li><a href="#">Описание тренажера</a></li>
+					<li><a href="#">Инструкции по установке</a></li>
+					<li><a href="#">Информация</a></li>
+				</ul>
+			</li>
 			<li><a href="/validity">ВАЛИДНОСТЬ</a></li>
 			<li><a href="/contacts">КОНТАКТЫ</a></li>
 		</ul>
@@ -62,5 +70,17 @@
 		</ul>
 
 	</nav>
+
+</template>
+
+<template name="admin_panel">
+
+	<div class="admin_panel">
+		<ul class="admin_menu">
+			<li><a class="admin_link" href="/orders">заказы</a></li>
+			<li><a class="admin_link" href="/cforms">контактные формы</a></li>
+			<li><a class="admin_link" href="/users">пользователи</a></li>
+		</ul>
+	</div>
 
 </template>

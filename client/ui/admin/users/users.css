@@ -1,0 +1,116 @@
+section.users ul li {
+
+	list-style: none;
+	display: inline;
+	padding: 10px;
+	border: 1px solid #333;
+	border-radius: 4px;
+	cursor: pointer;
+
+}
+
+section.users li:hover {
+
+	border-color: #ff0000;
+	color: #ff0000;
+
+}
+
+section.users table {
+
+	margin: 50px auto;
+	width: 100%;
+	text-align: center;
+
+}
+
+section.users td {
+
+	padding: 5px;
+	border: 1px solid #aaa;
+	border-radius: 2px;
+
+}
+
+section.users tr:hover {
+
+	color: #ff0000;
+
+}
+
+section.users a {
+
+	color: #2b285f;
+
+}
+
+section.users a:hover {
+
+	color: #ff0000;
+
+}
+
+section.users h3 {
+
+	color: #2b285f;
+	cursor: pointer;
+	text-align: right;
+
+}
+
+section.users h3:hover {
+
+	color: #ff0000;
+
+}
+
+div.new_admin {
+
+	margin: 5px auto;
+	width: 80%;
+	text-align: center;
+	display: none;
+
+}
+
+div.new_admin label {
+
+	font-weight: bold;
+
+}
+
+div.new_admin input {
+
+	width: 80%;
+	padding: 5px;
+
+}
+
+div.new_admin input.submit {
+
+	background-color: #2b285f;
+	color: #fff;
+	font-weight: bold;
+	cursor: pointer;
+
+}
+
+div.new_admin input.submit:hover {
+
+	color: #ff0000;
+
+}
+
+td.delete_admin {
+
+	background-color: rgba(255, 0, 0, 0.5);
+	color: #fff;
+	cursor: pointer;
+
+}
+
+td.delete_admin:hover {
+
+	background-color: rgba(255, 0, 0, 0.75);
+
+}

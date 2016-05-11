@@ -161,5 +161,14 @@ form.contact_form button {
 .alert-note {
 
 	color: #ff0000;
+	display: none;
+
+}
+
+p.contact_form_sent {
+
+	text-align: center;
+	color: green;
+	display: none;
 
 }

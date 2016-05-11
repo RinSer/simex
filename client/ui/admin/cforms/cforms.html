@@ -1,0 +1,81 @@
+<template name="cforms">
+
+	<section class="cforms">
+		<h2>Контактные формы</h2>
+		<ul>
+			<li class="current all_cforms">Все</li>
+			<li class="new_cforms">Новые</li>
+			<li class="processed_cforms">Обработанные</li>
+		</ul>
+		<div style="overflow-x: auto;">
+			<table>
+				<tr>
+					<th>ФИО</th>
+					<th>Email</th>
+					<th>Тема</th>
+					<th>Обработано</th>
+				</tr>
+				{{#each forms}}
+				<tr>
+					<td>{{familyName}}
+						&nbsp;{{firstName}}
+						{{#if secondName}}
+							&nbsp;{{secondName}}
+						{{/if}}
+					</td>
+					<td>
+						{{#if user}}
+							<a href="/users/{{user}}">{{email}}</a>
+						{{else}}
+							{{email}}
+						{{/if}}
+					</td>
+					<td><a href="/cforms/{{_id}}">{{theme}}</a></td>
+					<td>
+						{{#if processed}}
+							Да
+						{{else}}
+							Нет
+						{{/if}}
+					</td>
+				</tr>
+				{{/each}}
+			</table>
+		</div>
+
+	</section>
+
+</template>
+
+
+<template name="cform">
+
+	<section class="cform">
+		<a href="#" class="back">Назад</a>
+		<div>
+			<label class="processed">
+				{{#if processed}}
+		        	<input type="checkbox" checked/>
+		        {{else}}
+		        	<input type="checkbox"/>
+		        {{/if}}
+		        Обработано
+		    </label>
+			{{#if user}}
+				<a href="/users/{{user}}">Профиль пользователя</a>
+			{{/if}}
+			<h3>Фамилия:&nbsp;{{familyName}}</h3>
+			<h3>Имя:&nbsp;{{firstName}}</h3>
+			{{#if secondName}}
+				<h3>Отчество:&nbsp;{{secondName}}</h3>
+			{{/if}}
+			<h3>Email:&nbsp;{{email}}</h3>
+			{{#if tel}}
+				<h3>Телефон:&nbsp;{{tel}}</h3>
+			{{/if}}
+			<h4>Тема:&nbsp;{{theme}}</h4>
+			<p>{{message}}</p>
+		</div>
+	</section>
+
+</template>

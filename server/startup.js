@@ -1,6 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 
 Meteor.startup(() => {
+  // Set email env var
+  process.env.MAIL_URL="smtp://postmaster@sandboxe25f63c8067f4f5fb093a393818f5919.mailgun.org:80141f9897f2ee0402301b30ea8d2ab3@smtp.mailgun.org:587"
   // Create dev users
   const init_users = [
   	// Admin users
@@ -26,7 +28,7 @@ Meteor.startup(() => {
     {
         name: "test2",
         email: "test2@test.com",
-		password: "123",
+		    password: "123",
         address: "test2 address"
     },
     {
