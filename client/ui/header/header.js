@@ -7,6 +7,7 @@ Template.header.onCreated(function() {
 
 	this.autorun(() => {
 		if (Meteor.userId()) this.subscribe('userData');
+		this.subscribe('biomodelsHeaderData');
 	});
 
 });
@@ -61,12 +62,36 @@ Template.header.onRendered(function() {
 
 	});
 
+	$('a.biomodels_a').click(function() {
+		$('ul.biomodels_list').slideToggle();
+	});
+
+	$('a.biomodels_a, ul.biomodels_list').mouseenter(function() {
+		$('ul.biomodels_list').show();
+	});
+
+	$('a.biomodels_a').mouseleave(function() {
+		if ($('ul.biomodels_list').is(':hover') === false) {
+			$('ul.biomodels_list').hide();
+		}
+	});
+
+	$('ul.biomodels_list').mouseleave(function() {
+		$('ul.biomodels_list').hide();
+	});
+
 	$('a.products').click(function() {
 		$('ul.products_ref').slideToggle();
 	});
 
 	$('a.products, ul.products_ref').mouseenter(function() {
 		$('ul.products_ref').show();
+	});
+
+	$('a.products').mouseleave(function() {
+		if ($('ul.products_ref').is(':hover') === false) {
+			$('ul.products_ref').hide();
+		}
 	});
 
 	$('ul.products_ref').mouseleave(function() {
@@ -98,6 +123,12 @@ Template.header.helpers({
 			return user.admin;
 
 		}
+
+	},
+
+	biomodels:function() {
+
+		return Biomodels.find({});
 
 	}
 

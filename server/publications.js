@@ -19,6 +19,34 @@ Meteor.publish('userData', function() {
 	}});
 });
 
+// Publish Biomodels data for header
+Meteor.publish('biomodelsHeaderData', function() {
+
+	return Biomodels.find({}, {fields: {title: 1, pic: 1}});
+
+});
+
+// Publish Biomodels data
+Meteor.publish('biomodelsData', function() {
+
+	return Biomodels.find({}, {fields: {title: 1, description: 1, pic: 1, photos: 1, price: 1}});
+
+});
+
+// Publish a biomodel data
+Meteor.publish('biomodelData', function(biomodelId) {
+
+	return Biomodels.find({_id: biomodelId}, {fields: {
+													title: 1, 
+													description: 1,
+													full_description: 1,
+													photos: 1,
+													pic: 1,
+													price: 1
+												}});
+
+});
+
 // Publish News data
 Meteor.publish('newsData', function() {
 

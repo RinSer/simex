@@ -1,0 +1,146 @@
+section#biomodels {
+
+	margin-top: 3%;
+	margin-bottom: 25%;
+
+}
+
+section#biomodels h2 {
+
+	font-size: 2em;
+	text-align: center;
+
+}
+
+div.each_biomodel {
+
+	clear: both;
+	padding: 10px;
+
+}
+
+div.each_biomodel img {
+
+	float: left;
+	margin-right: 25px;
+	margin-bottom: 10px;
+
+}
+
+div.each_biomodel p {
+
+	padding: 10px;
+
+}
+
+span.each_biomodel_description {
+
+	border: 2px solid #333;
+	border-radius: 8px;
+	padding: 10px;
+	display: inline-block;
+
+}
+
+p.trainer_price {
+
+	font-weight: bold;
+	color: #aaa;
+
+}
+
+button.add_to_cart {
+
+	font-size: 1.2em;
+	padding: 5px;
+	color: #333;
+	background-color: #fff;
+	cursor: pointer;
+
+}
+
+p.trainer_link {
+
+	clear: both;
+
+}
+
+p.trainer_link a {
+
+	font-weight: bold;
+	color: #ff0000;
+
+}
+
+p.trainer_link a:hover {
+
+	color: rgba(255, 0, 0, 0.5);
+	text-decoration: underline;
+
+}
+
+section.biomodel {
+
+	margin-top: 3%;
+	margin-bottom: 25%;
+
+}
+
+section.biomodel h3 {
+
+	text-align: center;
+
+}
+
+section.biomodel h4 {
+
+	font-size: 1.2em;
+
+}
+
+img.biomodel_main {
+
+	display: block;
+	margin: 50px 0 25px 0;
+	max-width: 100%;
+
+}
+
+img.biomodel_img {
+
+	cursor: pointer;
+
+}
+
+img.biomodel_img:hover {
+
+	border: 2px solid #2b285f;
+
+}
+
+.current_img {
+
+	border: 1px solid #ff0000;
+
+}
+
+@media (min-width: 768px) {
+
+	.biomodel-col-2 {
+
+		width: 50%;
+		float: left;
+
+	}
+
+}
+
+@media (max-width: 767px) {
+
+	.biomodel-col-2 {
+
+		width: 100%;
+
+	}
+
+}

@@ -3,6 +3,47 @@ import { Meteor } from 'meteor/meteor';
 Meteor.startup(() => {
   // Set email env var
   process.env.MAIL_URL="smtp://postmaster@sandboxe25f63c8067f4f5fb093a393818f5919.mailgun.org:80141f9897f2ee0402301b30ea8d2ab3@smtp.mailgun.org:587"
+  
+  // Create dev biomodels
+  const init_biomodels = [
+
+    {
+      title: "Удаление инородных тел",
+      description: "Пищевод, желудок с 5 маркированными участками",
+      full_description: "В желудке  5  маркированных участков (участки расположены в областях наиболее пригодных для разделения слоев стенки желудка). Для отработки манипуляций можно использовать: эндоскопическую инъекционную иглу, электрохирургический нож.",
+      photos: ["/bmstub.png", "/bmstub.png", "/bmstub.png", "/bmstub.png"],
+      pic: "/p1.png",
+      price: 3000.01
+    },
+    {
+      title: "Стентирование пищевода",
+      description: "Пищевод, желудок с 5 маркированными участками",
+      full_description: "В желудке  5  маркированных участков (участки расположены в областях наиболее пригодных для разделения слоев стенки желудка). Для отработки манипуляций можно использовать: эндоскопическую инъекционную иглу, электрохирургический нож.",
+      photos: ["/bmstub.png", "/bmstub.png", "/bmstub.png", "/bmstub.png"],
+      pic: "/p2.png",
+      price: 2000.99
+    },
+    {
+      title: "Эндоскопический гемостаз",
+      description: "Пищевод, желудок с 5 маркированными участками",
+      full_description: "В желудке  5  маркированных участков (участки расположены в областях наиболее пригодных для разделения слоев стенки желудка). Для отработки манипуляций можно использовать: эндоскопическую инъекционную иглу, электрохирургический нож.",
+      photos: ["/bmstub.png", "/bmstub.png", "/bmstub.png", "/bmstub.png"],
+      pic: "/p3.png",
+      price: 2500.25
+    }
+
+  ];
+
+  // Add Biomodels if none
+  if (Biomodels.find().count() === 0) {
+
+    _.each(init_biomodels, function(biomodel) {
+      Biomodels.insert(biomodel);
+      console.log("Added "+biomodel.title+" biomodel.");
+    });
+
+  }
+
   // Create dev users
   const init_users = [
   	// Admin users

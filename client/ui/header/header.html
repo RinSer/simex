@@ -10,7 +10,7 @@
 		</section>
 		<section class="col-tm-3">
 			<div class="top_search">
-				<input type="search" name="simex_search" value="Что-то ищете на Simex?" class="header_search">
+				<input type="search" name="simex_search" placeholder="Что-то ищете на Simex?" class="header_search">
 				<label for="search">
 					<i class="fa fa-search"></i>
 				</label>
@@ -44,8 +44,16 @@
 			<li><a class="active" href="/">НОВОСТИ</a></li>
 			<li><a href="/about">О КОМПАНИИ</a></li>
 			<li>
-				<a class="biomodels" href="#">БИОМОДЕЛИ&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i></a>
-
+				<a class="biomodels_a" href="#">БИОМОДЕЛИ&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i></a>
+				<ul class="biomodels_list">
+					{{#each biomodels}}
+						<a href="/biomodels/{{_id}}"><img src="{{pic}}" class="biomodels_hpic" height="40px"></a>
+					{{/each}}
+					{{#each biomodels}}
+						<li><a href="/biomodels/{{_id}}">{{title}}</a></li>
+					{{/each}}
+					<li><a href="/biomodels">Все биомодели</a></li>
+				</ul>
 			</li>
 			<li>
 				<a class="products" href="#">ПРОДУКЦИЯ&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i></a>

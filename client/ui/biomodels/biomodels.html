@@ -1,0 +1,47 @@
+<template name="biomodels">
+
+	<section id="biomodels">
+		<h2>Все биомодели Simex</h2>
+		{{#each biomodels}}
+			{{> each_biomodel}}
+		{{/each}}
+	</section>
+
+</template>
+
+<template name="each_biomodel">
+
+	<div class="each_biomodel">
+		<a href="/biomodels/{{_id}}"><img style="float:right;" src="{{pic}}"></a>
+		<h3>{{title}}</h3>
+		<a href="/biomodels/{{_id}}"><img src="{{photos.[0]}}"></a>
+		<p><span class="each_biomodel_description">{{description}} – <b>{{price}}</b> р.</span></p>
+		<p class="trainer_price">Аренда тренажера SIMEX GI – 2 000 р.</p>
+		<button class="add_to_cart">Добавить в корзину</button>
+		<p class="trainer_link"><a href="#">Биомодель фиксируется в тренажер SIMEX GI</a></p>
+	</div>
+
+</template>
+
+
+<template name="biomodel">
+
+	<section class="biomodel">
+		<h3>{{biomodel.title}}</h3>
+		<div class="biomodel-col-2">
+			<img class="biomodel_main" src="{{current_photo}}">
+			{{#each photo in biomodel.photos}}
+				<img class="biomodel_img {{@index}}" src="{{photo}}" height="25px">
+			{{/each}}
+		</div>
+		<div class="biomodel-col-2">
+			<p>{{> editableText context=biomodel options=optionsHelper field="description"}}</p>
+			<h4>Цена: {{> editableText context=biomodel options=optionsHelper field="price"}} р.<img style="float:right;" src="{{biomodel.pic}}"></h4>
+			<p class="trainer_price">Аренда тренажера SIMEX GI – 2 000 р.</p>
+			<p class="trainer_link"><a href="#">Биомодель фиксируется в тренажер SIMEX GI</a></p>
+			<p>{{> editableText context=biomodel options=optionsHelper field="full_description"}}</p>
+			<button class="add_to_cart">Добавить в корзину</button>
+		</div>
+	</section>
+
+</template>
