@@ -51,7 +51,7 @@ ul {
 
 }
 
-input {
+input, textarea {
 
 	border-radius: 4px;
 	font-size: 1em;

@@ -47,6 +47,13 @@ Meteor.publish('biomodelData', function(biomodelId) {
 
 });
 
+// Publish manual steps data
+Meteor.publish('manualStepsData', function() {
+
+	return ManualSteps.find({}, {fields: {index: 1, description: 1, photos: 1}, sort: {index: 1}});
+
+});
+
 // Publish News data
 Meteor.publish('newsData', function() {
 

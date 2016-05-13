@@ -57,22 +57,22 @@
 
 	<section class="news_form">
 		
-			<input type="text" name="title" value="Заголовок новости">
+			<input type="text" name="title" placeholder="Заголовок новости">
 			<br>
 			<input class="checkbox" type="checkbox" name="link" check="unchecked">Добавить ссылку на сайт партнера<br>
-			<input type="text" name="link_url" value="Адрес ссылки">
+			<input type="text" name="link_url" placeholder="Адрес ссылки">
 			<br>
-			<input type="text" name="link_text" value="Текст ссылки">
+			<input type="text" name="link_text" placeholder="Текст ссылки">
 			<br>
 			<button class="news_add_photo">Добавить фото с описанием</button>
 			<button class="news_save">Сохранить</button>
 			<br>
 			{{#if add_photo}}
 				<form class="photo">
-					<input type="text" name="description" value="Заголовок фото">
-					<input type="text" name="url" value="http://photourl">
-					<input type="text" name="text" value="Описание фото">
-					<input class="add_photo" type="submit" value="Добавить фото">
+					<input type="text" name="description" placeholder="Заголовок фото">
+					<input type="text" name="url" placeholder="http://photourl">
+					<input type="text" name="text" placeholder="Описание фото">
+					<input class="add_photo" type="submit" placeholder="Добавить фото">
 				</form>
 			{{/if}}
 			{{#each photos}}

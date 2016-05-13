@@ -150,7 +150,8 @@ section.news_form input {
 	width: 80%;
 	font-size: 1.2em;
 	color: #333;
-	padding: 2px;
+	padding: 5px;
+	margin-bottom: 10px;
 
 }
 
@@ -165,6 +166,8 @@ section.news_form input.checkbox {
 	background-color: #2b285f;
 	color: #fff;
 	font-size: 1.2em;
+	padding: 5px;
+	margin-bottom: 10px;
 	clear: both;
 
 }
@@ -174,6 +177,8 @@ section.news_form input.checkbox {
 	background-color: #fff;
 	color: #333;
 	font-size: 1.2em;
+	padding: 5px;
+	margin-bottom: 10px;
 	clear: both;
 
 }

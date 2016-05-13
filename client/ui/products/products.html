@@ -1,0 +1,40 @@
+<template name="simulator">
+
+	<section id="simulator">
+
+		<h1>Тренажер SIMEX GI</h1>
+
+	</section>
+
+</template>
+
+
+<template name="manual">
+
+	<section id="manual">
+
+		<h2>Инструкция по установке тренажера</h2>
+		{{#each step in steps}}
+			{{> manual_step step=step }}
+		{{/each}}
+
+	</section>
+
+</template>
+
+<template name="manual_step">
+
+	<div class="manual_step">
+		{{#if photo}}
+			<div class="index">{{step.index}}</div>
+			<img src="{{photo}}" height="150px" >
+		{{else}}
+			{{#each img in step.photos}}
+				<div class="index">{{step.index}}.{{@index}}</div>
+				<img src="{{img}}" height="150px">
+			{{/each}}
+		{{/if}}
+		<p>{{> editableText context=step options=optionsHelper field="description" }}</p>
+	</div>
+
+</template>

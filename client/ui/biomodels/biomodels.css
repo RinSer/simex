@@ -19,11 +19,32 @@ div.each_biomodel {
 
 }
 
+div.each_biomodel h3 a {
+
+	color: #333;
+
+}
+
+div.each_biomodel h3 a:hover {
+
+	color: #ff0000;
+	text-decoration: underline;
+
+}
+
 div.each_biomodel img {
 
 	float: left;
 	margin-right: 25px;
 	margin-bottom: 10px;
+	max-width: 640px;
+
+}
+
+div.each_biomodel img:hover {
+
+	border: 2px solid #ff0000;
+	border-radius: 4px;
 
 }
 
@@ -101,7 +122,7 @@ section.biomodel h4 {
 img.biomodel_main {
 
 	display: block;
-	margin: 50px 0 25px 0;
+	margin: 0 0 25px 0;
 	max-width: 100%;
 
 }
@@ -109,18 +130,27 @@ img.biomodel_main {
 img.biomodel_img {
 
 	cursor: pointer;
+	height: 50px;
 
 }
 
 img.biomodel_img:hover {
 
 	border: 2px solid #2b285f;
+	border-radius: 4px;
 
 }
 
 .current_img {
 
-	border: 1px solid #ff0000;
+	border: 2px solid #ff0000;
+	border-radius: 4px;
+
+}
+
+.biomodel-col-2 {
+
+	padding: 10px;
 
 }
 
@@ -144,3 +174,112 @@ img.biomodel_img:hover {
 	}
 
 }
+
+/*** Admin components ***/
+
+h1.biomodel_add {
+
+	text-align: right;
+	color: #ff0000;
+	border: 2px solid #ff0000;
+	padding: 5px;
+	cursor: pointer;
+
+}
+
+h1.biomodel_add:hover {
+
+	background-color: #2b285f;
+
+}
+
+h1.biomodel_add:active {
+
+	border: 1px solid #fff;
+
+}
+
+button.delete_biomodel {
+
+	border: none;
+	background-color: #ff0000;
+	color: #fff;
+	font-size: 1.25em;
+	padding: 5px;
+	cursor: pointer;
+
+}
+
+button.delete_biomodel:hover {
+
+	color: #333;
+
+}
+
+button.delete_biomodel:active {
+
+	border: 1px solid #2b285f;
+
+}
+
+section.new_biomodel {
+
+	padding: 10px;
+	margin: 50px auto;
+	width: 90%;
+
+}
+
+section.new_biomodel input, textarea {
+
+	width: 100%;
+	margin-bottom: 10px;
+	padding: 5px;
+	font-size: 1.2em;
+
+}
+
+button.add_biomodel_photos {
+
+	color: #fff;
+	background-color: #2b285f;
+	font-size: 1.25em;
+	padding: 5px;
+	text-align: center;
+	margin-bottom: 10px;
+
+}
+
+button.save_biomodel, button.add_biomodel_photo {
+
+	color: #333;
+	background-color: #fff;
+	font-size: 1.25em;
+	padding: 5px;
+	text-align: center;
+	margin-bottom: 10px;
+
+}
+
+section.new_biomodel div {
+
+	margin: 10px;
+	float: left;
+
+}
+
+section.new_biomodel div i {
+
+	float: right;
+	color: red;
+	cursor: pointer;
+
+}
+
+section.new_biomodel div i:hover {
+
+	color: rgba(255, 0, 0, 0.5);
+
+}
+
+/*** End of Admin components ***/

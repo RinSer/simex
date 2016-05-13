@@ -2,9 +2,48 @@
 
 	<section id="biomodels">
 		<h2>Все биомодели Simex</h2>
+		{{#if admin}}
+			<h1 class="biomodel_add"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Добавить биомодель</h1>
+			{{#if add_biomodel}}
+				{{> new_biomodel}}
+			{{/if}}
+		{{/if}}
 		{{#each biomodels}}
 			{{> each_biomodel}}
 		{{/each}}
+	</section>
+
+</template>
+
+<template name="new_biomodel">
+
+	<section class="new_biomodel">
+		<input type="text" name="biomodel_title" placeholder="Название биомодели">
+		<br>
+		<textarea rows="3" name="biomodel_description" placeholder="Краткое описание биомодели"></textarea>
+		<br>
+		<textarea rows="5" name="biomodel_full_description" placeholder="Полное описание биомодели"></textarea>
+		<br>
+		<input type="number" step="0.01" name="biomodel_price" placeholder="Цена биомодели">
+		<br>
+		<input type="text" name="biomodel_pic" placeholder="URL фото классификатора">
+		<br>
+		<button class="add_biomodel_photos">Добавить фотографию</button>
+		<button class="save_biomodel">Сохранить</button>
+		<br>
+		{{#if add_biomodel_photo}}
+			<input type="text" name="biomodel_photo" placeholder="URL фотографии">
+			<br>
+			<button class="add_biomodel_photo">Добавить</button>
+			<br>
+		{{/if}}
+		{{#each photo in photos}}
+			<div>
+				<i class="{{@index}} fa fa-times biomodel_remove_photo" aria-hidden="true"></i>
+				<img src="{{photo}}" height="50px">
+			</div>
+		{{/each}}
+
 	</section>
 
 </template>
@@ -13,11 +52,14 @@
 
 	<div class="each_biomodel">
 		<a href="/biomodels/{{_id}}"><img style="float:right;" src="{{pic}}"></a>
-		<h3>{{title}}</h3>
+		<h3><a href="/biomodels/{{_id}}">{{title}}</a></h3>
 		<a href="/biomodels/{{_id}}"><img src="{{photos.[0]}}"></a>
 		<p><span class="each_biomodel_description">{{description}} – <b>{{price}}</b> р.</span></p>
 		<p class="trainer_price">Аренда тренажера SIMEX GI – 2 000 р.</p>
 		<button class="add_to_cart">Добавить в корзину</button>
+		{{#if admin}}
+			<button class="delete_biomodel">Удалить</button>
+		{{/if}}
 		<p class="trainer_link"><a href="#">Биомодель фиксируется в тренажер SIMEX GI</a></p>
 	</div>
 
@@ -31,7 +73,7 @@
 		<div class="biomodel-col-2">
 			<img class="biomodel_main" src="{{current_photo}}">
 			{{#each photo in biomodel.photos}}
-				<img class="biomodel_img {{@index}}" src="{{photo}}" height="25px">
+				{{> biomodel_img current_photo=current_photo photo=photo index=@index}}
 			{{/each}}
 		</div>
 		<div class="biomodel-col-2">
@@ -43,5 +85,15 @@
 			<button class="add_to_cart">Добавить в корзину</button>
 		</div>
 	</section>
+
+</template>
+
+<template name="biomodel_img">
+
+	{{#if current}}
+		<img class="biomodel_img {{index}} current_img" src="{{photo}}" height="50px">
+	{{else}}
+		<img class="biomodel_img {{index}}" src="{{photo}}" height="50px">
+	{{/if}}
 
 </template>

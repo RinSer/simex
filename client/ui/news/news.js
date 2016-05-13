@@ -243,6 +243,8 @@ Template.new_news.events({
 
 		template.photos.push({description, url, text});
 
+		template.find('form.photo').reset();
+
 	},
 
 	'click .news_delete_photo':function(event, template) {
