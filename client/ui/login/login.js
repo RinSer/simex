@@ -69,21 +69,31 @@ Template.register.events({
 
 		event.preventDefault();
 
-		const name = event.target.name.value;
+		const firstName = event.target.firstName.value;
+		const secondName = event.target.secondName.value ? event.target.secondName.value : false;
+		const familyName = event.target.familyName.value;
 		const email = event.target.email.value;
+		const address = event.target.address.value ? event.target.address.value: false;
 		const password = event.target.password.value;
 		const pcheck = event.target.pcheck.value;
 
 		if (password === pcheck) {
-			Meteor.call('addUser', {name, email, password}, function(err, data) {
+			Meteor.call('addUser', {
+									firstName, 
+									secondName,
+									familyName,
+									email,
+									address,
+									password
+						}, function(err, data) {
 
-				if (err) {
-					$('.register_error').show();
-				}
-				else {
-					Meteor.loginWithPassword(email, password);
-					Session.set('modal', false);
-				}
+						if (err) {
+							$('.register_error').show();
+						}
+						else {
+							Meteor.loginWithPassword(email, password);
+							Session.set('modal', false);
+						}
 
 			});
 		}
@@ -124,6 +134,17 @@ Template.register.events({
 			}
 
 		}
+
+	}
+
+});
+
+
+Template.user_profile.helpers({
+
+	profile:function() {
+
+		return Meteor.user();
 
 	}
 

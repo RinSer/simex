@@ -3,7 +3,9 @@ import { Meteor } from 'meteor/meteor';
 
 // Add custom fields to user Accounts
 Accounts.onCreateUser(function(options, user) {
-	user.name = options.name;
+	user.firstName = options.firstName;
+	user.secondName = options.secondName || false;
+	user.familyName = options.familyName;
 	user.admin = options.admin || false;
 	user.address = options.address || false;
 	return user;
@@ -13,7 +15,9 @@ Accounts.onCreateUser(function(options, user) {
 Meteor.publish('userData', function() {
 	if (!this.userId) return null;
 	return Meteor.users.find(this.userId, {fields: {
-		name: 1,
+		firstName: 1,
+		secondName: 1,
+		familyName: 1,
 		address: 1,
 		admin: 1
 	}});
@@ -117,6 +121,6 @@ Meteor.publish('userCforms', function(userId) {
 // Publish users data for admin
 Meteor.publish('usersData', function() {
 
-	return Meteor.users.find({}, {fields: {name: 1, emails: 1, address: 1, admin: 1}});
+	return Meteor.users.find({}, {fields: {firstName: 1, secondName: 1, familyName: 1, emails: 1, address: 1, admin: 1}});
 
 });

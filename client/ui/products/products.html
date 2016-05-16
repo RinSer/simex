@@ -13,10 +13,48 @@
 
 	<section id="manual">
 
-		<h2>Инструкция по установке тренажера</h2>
-		{{#each step in steps}}
-			{{> manual_step step=step }}
+		<div id="print_manual">
+			<h2>Инструкция по установке тренажера</h2>
+			{{#if admin}}
+				<h1 class="add_step"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Добавить инструкцию</h1>
+				{{#if add_step}}
+					{{> new_manual_step}}
+				{{/if}}
+			{{/if}}
+			{{#each step in steps}}
+				{{> manual_step step=step }}
+			{{/each}}
+		</div>
+		<button id="print_manual">Распечатать</button>
+
+	</section>
+
+</template>
+
+<template name="new_manual_step">
+
+	<section class="new_step">
+		<input type="number" name="step_index" placeholder="Номер шага">
+		<br>
+		<textarea rows="5" name="step_description" placeholder="Описание шага"></textarea>
+		<br>
+		<button class="add_step_photos">Добавить фотографию</button>
+		<button class="save_step">Сохранить</button>
+		<br>
+		{{#if add_step_photo}}
+			<input type="text" name="step_photo" placeholder="URL фотографии">
+			<br>
+			<button class="add_step_photo">Добавить</button>
+			<br>
+		{{/if}}
+		<div id="new_step_photos">
+		{{#each photo in photos}}
+			<div class="new_step_photo">
+				<i class="{{@index}} fa fa-times remove_step_photo" aria-hidden="true"></i>
+				<img src="{{photo}}" height="50px">
+			</div>
 		{{/each}}
+		</div>
 
 	</section>
 
@@ -26,15 +64,22 @@
 
 	<div class="manual_step">
 		{{#if photo}}
-			<div class="index">{{step.index}}</div>
-			<img src="{{photo}}" height="150px" >
+			<div class="photo_index">
+				<div class="index single_index">{{step.index}}</div>
+				<img src="{{photo}}" >
+			</div>
 		{{else}}
 			{{#each img in step.photos}}
-				<div class="index">{{step.index}}.{{@index}}</div>
-				<img src="{{img}}" height="150px">
+				<div class="photo_index">
+					<div class="index double_index">{{step.index}}.{{@index}}</div>
+					<img src="{{img}}" >
+				</div>
 			{{/each}}
 		{{/if}}
 		<p>{{> editableText context=step options=optionsHelper field="description" }}</p>
+		{{#if admin}}
+			<button class="delete_step">Удалить</button>
+		{{/if}}
 	</div>
 
 </template>

@@ -12,7 +12,7 @@ Meteor.startup(() => {
       description: "0 Пищевод, желудок с 5 маркированными участками",
       full_description: "0 В желудке  5  маркированных участков (участки расположены в областях наиболее пригодных для разделения слоев стенки желудка). Для отработки манипуляций можно использовать: эндоскопическую инъекционную иглу, электрохирургический нож.",
       photos: ["/p11.jpg", "/p12.jpg", "/p13.jpg"],
-      pic: "/p1.png",
+      pic: "/p1.jpg",
       price: 3000.01
     },
     {
@@ -20,7 +20,7 @@ Meteor.startup(() => {
       description: "1 Пищевод, желудок с 5 маркированными участками",
       full_description: "1 В желудке  5  маркированных участков (участки расположены в областях наиболее пригодных для разделения слоев стенки желудка). Для отработки манипуляций можно использовать: эндоскопическую инъекционную иглу, электрохирургический нож.",
       photos: ["/p21.jpg", "/p22.jpg", "/p23.jpg"],
-      pic: "/p2.png",
+      pic: "/p2.jpg",
       price: 2000.99
     },
     {
@@ -28,7 +28,7 @@ Meteor.startup(() => {
       description: "2 Пищевод, желудок с 5 маркированными участками",
       full_description: "2 В желудке  5  маркированных участков (участки расположены в областях наиболее пригодных для разделения слоев стенки желудка). Для отработки манипуляций можно использовать: эндоскопическую инъекционную иглу, электрохирургический нож.",
       photos: ["/p31.jpg", "/p32.jpg", "/p33.jpg"],
-      pic: "/p3.png",
+      pic: "/p3.jpg",
       price: 2500.25
     }
 
@@ -84,44 +84,56 @@ Meteor.startup(() => {
   const init_users = [
   	// Admin users
   	{
-  		name: "Serj",
+  		firstName: "Serj",
+      familyName: "Admin",
   		email: "serj.dukareff@gmail.com",
   		password: "simex",
   		admin: true
   	},
   	{
-  		name: "Simex",
+  		firstName: "Simex",
+      familyName: "Admin",
   		email: "simex@simex.train",
   		password: "biomodel",
   		admin: true
   	},
   	// Client users
   	{
-        name: "test1",
+        firstName: "test1",
+        secondName: "TestUser",
+        familyName: "Test1",
         email: "test1@test.com",
         password: "123",
         address: "test1 address"
     },
     {
-        name: "test2",
+        firstName: "test2",
+        secondName: "TestUser",
+        familyName: "Test2",
         email: "test2@test.com",
 		    password: "123",
         address: "test2 address"
     },
     {
-        name: "test3",
+        firstName: "test3",
+        secondName: "TestUser",
+        familyName: "Test3",
         email: "test3@test.com",
         password: "123",
         address: "test3 address"
     },
     {
-        name: "test4",
+        firstName: "test4",
+        secondName: "TestUser",
+        familyName: "Test4",
         email: "test4@test.com",
         password: "123",
         address: "test4 address"
     },
     {
-        name: "test5",
+        firstName: "test5",
+        secondName: "TestUser",
+        familyName: "Test5",
         email: "test5@test.com",
         password: "123",
         address: "test5 address"
@@ -131,7 +143,7 @@ Meteor.startup(() => {
   if (Meteor.users.find().count() === 0) {
   	_.each(init_users, function(user) {
   		Accounts.createUser(user);
-  		console.log("Created user "+user.name);
+  		console.log("Created user "+user.firstName);
   	});
   }
 

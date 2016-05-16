@@ -108,7 +108,7 @@ Template.header.helpers({
 
 			let user = Meteor.user();
 			
-			return user.name;
+			return user.emails[0].address;
 
 		}
 
