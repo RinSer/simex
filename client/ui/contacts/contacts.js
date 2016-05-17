@@ -85,6 +85,22 @@ Template.contacts.events({
 
 });
 
+Template.contact_form.onRendered(function() {
+
+	if (Meteor.user()) {
+
+		const user = Meteor.user();
+
+		this.find('[name=surname]').value = user.familyName;
+		this.find('[name=name]').value = user.firstName;
+		if (user.secondName)
+			this.find('[name=sndname]').value = user.secondName;
+		this.find('[name=email]').value = user.emails[0].address;
+
+	}
+
+});
+
 Template.contact_form.events({
 
 	'submit form.contact_form':function(event, template) {

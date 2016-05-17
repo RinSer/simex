@@ -136,6 +136,14 @@ Template.new_biomodel.events({
 
 });
 
+Template.each_biomodel.onCreated(function() {
+
+	this.autorun(() => {
+		this.added = new ReactiveVar(false);
+	});
+
+});
+
 Template.each_biomodel.helpers({
 
 	admin:function() {
@@ -148,6 +156,12 @@ Template.each_biomodel.helpers({
 
 		}
 
+	},
+
+	added:function() {
+
+		return Template.instance().added.get();
+
 	}
 
 });
@@ -157,6 +171,15 @@ Template.each_biomodel.events({
 	'click .delete_biomodel':function(event, template) {
 
 		Meteor.call('deleteBiomodel', template.data._id);
+
+	},
+
+	'click .add_to_cart':function(event, template) {
+
+		var cart = Session.get('cart');
+		cart.push(template.data._id);
+		Session.set('cart', cart);
+		template.added.set(true);
 
 	}
 
@@ -169,6 +192,7 @@ Template.biomodel.onCreated(function() {
 			Session.set('photo_index', 0);
 			this.data.id = Router.current().params.id;
 			this.subscribe('biomodelData', this.data.id);
+			$('.cart_alert').hide();
 		}
 	});
 
@@ -209,6 +233,19 @@ Template.biomodel.helpers({
 			wysiwyg: true,
 			title: "Кликни, чтобы редактировать"
 		};
+
+	}
+
+});
+
+Template.biomodel.events({
+
+	'click .add_to_cart':function(event, template) {
+
+		var cart = Session.get('cart');
+		cart.push(template.data.id);
+		Session.set('cart', cart);
+		$('.cart_alert').show();
 
 	}
 

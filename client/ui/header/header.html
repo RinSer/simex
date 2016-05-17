@@ -18,7 +18,7 @@
 		</section>
 		<section class="col-tm-3">
 			<div class="cart_login">
-				<p><span class="upper_hover cart"><i class="fa fa-cart-arrow-down"></i>Оформить заказ</span></p>
+				<p><span class="upper_hover cart_modal_on cart"><i class="fa fa-cart-arrow-down"></i>Оформить заказ</span></p>
 				{{#unless currentUser}}
 					<p>
 						<span class="upper_hover modal_on register"><i class="fa fa-user-plus"></i>Зарегистрироваться&nbsp;</span>
@@ -66,12 +66,12 @@
 			<li><a href="/contacts">КОНТАКТЫ</a></li>
 		</ul>
 		<ul class="mobile_login">
-			<li><span class="upper_hover"><i class="fa fa-cart-arrow-down"></i>Оформить заказ</span></li>
+			<li><span class="upper_hover cart_modal_on"><i class="fa fa-cart-arrow-down"></i>Оформить заказ</span></li>
 			{{#unless currentUser}}
 				<li><span class="upper_hover modal_on register"><i class="fa fa-user-plus"></i>Зарегистрироваться&nbsp;</span></li>
 				<li><span class="upper_hover modal_on login"><i class="fa fa-sign-in"></i>Войти</span></li>
 			{{else}}
-				<li><span class="upper_hover"><i class="fa fa-user-md"></i>&nbsp;{{user_name}}&nbsp;</span></li>
+				<li><span class="upper_hover modal_on"><i class="fa fa-user-md"></i>&nbsp;{{user_name}}&nbsp;</span></li>
 				<li><span class="upper_hover logout"><i class="fa fa-sign-out"></i>Выйти</span></li>
 			{{/unless}}
 		</ul>

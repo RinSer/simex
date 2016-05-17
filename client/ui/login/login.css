@@ -122,3 +122,33 @@ input.login_button:hover {
 	color: #ff0000;
 
 }
+
+button.change_profile {
+
+	background-color: #2b285f;
+	color: #fff;
+	font-size: 1.25em;
+	border: none;
+
+}
+
+button.change_profile:hover {
+
+	color: #ff0000;
+
+}
+
+button.delete_profile {
+
+	background-color: #ff0000;
+	color: #fff;
+	font-size: 1.25em;
+	border: none;
+
+}
+
+button.delete_profile:hover {
+
+	border: 1px solid #2b285f;
+
+}

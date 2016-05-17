@@ -56,9 +56,12 @@
 		<a href="/biomodels/{{_id}}"><img src="{{photos.[0]}}" style="max-width: 100%;"></a>
 		<p><span class="each_biomodel_description">{{description}} – <b>{{price}}</b> р.</span></p>
 		<p class="trainer_price">Аренда тренажера SIMEX GI – 2 000 р.</p>
-		<button class="add_to_cart">Добавить в корзину</button>
+		<button class="add_to_cart">Добавить к заказу</button>
 		{{#if admin}}
 			<button class="delete_biomodel">Удалить</button>
+		{{/if}}
+		{{#if added}}
+			<p style="color: red;">Успешно добавлено!</p>
 		{{/if}}
 		<p class="trainer_link"><a href="#">Биомодель фиксируется в тренажер SIMEX GI</a></p>
 	</div>
@@ -83,6 +86,7 @@
 			<p class="trainer_link"><a href="#">Биомодель фиксируется в тренажер SIMEX GI</a></p>
 			<p>{{> editableText context=biomodel options=optionsHelper field="full_description"}}</p>
 			<button class="add_to_cart">Добавить в корзину</button>
+			<p class="cart_alert">Успешно добавлено!</p>
 		</div>
 	</section>
 

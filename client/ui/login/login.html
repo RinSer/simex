@@ -51,15 +51,32 @@
 
 <template name="user_profile">
 
-	<h2>Ваш профиль</h2>
-	<p><b>Имя:</b>&nbsp;{{profile.firstName}}</p>
-	{{#if profile.secondName}}
-		<p><b>Отчество:</b>&nbsp;{{profile.secondName}}</p>
-	{{/if}}
-	<p><b>Фамилия:</b>&nbsp;{{profile.familyName}}</p>
-	<p><b>Email:</b>&nbsp;{{profile.emails.[0].address}}</p>
-	{{#if profile.address}}
-		<p><b>Адрес:</b>&nbsp;{{profile.address}}</p>
-	{{/if}}
+	{{#unless profile_change}}
+		<h2>Ваш профиль</h2>
+		<p><b>Имя:</b>&nbsp;{{profile.firstName}}</p>
+		{{#if profile.secondName}}
+			<p><b>Отчество:</b>&nbsp;{{profile.secondName}}</p>
+		{{/if}}
+		<p><b>Фамилия:</b>&nbsp;{{profile.familyName}}</p>
+		<p><b>Email:</b>&nbsp;{{profile.emails.[0].address}}</p>
+		{{#if profile.address}}
+			<p><b>Адрес:</b>&nbsp;{{profile.address}}</p>
+		{{/if}}
+		<button class="change_profile">Изменить</button>
+		<button class="delete_profile">Удалить</button>
+	{{else}}
+		<span class="register_error">Ошибка!</span>
+		<form>
+			<p>Имя:<br> <input type="text" name="firstName"></p>
+			<p>Отчество:<br> <input type="text" name="secondName"></p>
+			<p>Фамилия:<br> <input type="text" name="familyName"></p>
+			<p>Email:<br> <input type="email" name="email"></p>
+			<p>Адрес:<br> <input type="text" name="address"></p>
+			<p>Пароль:<br> <input id="password" type="password" name="password"></p>
+			<span class="login_error">Не совпадают!</span>
+			<p>Подтверждение:<br> <input id="pcheck" type="password" name="pcheck"></p>
+			<p><input type="submit" value="Сохранить" class="login_button"></p>
+		</form>
+	{{/unless}}
 
 </template>

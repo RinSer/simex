@@ -1,11 +1,12 @@
 import { Template } from 'meteor/templating';
 import { Session } from 'meteor/session';
-import { ReactiveVar } from 'meteor/reactive-var';
 
 // Main template
 Template.SimexLayout.onCreated(function() {
 
 	Session.set('modal', false);
+	Session.set('cart_modal', false);
+	Session.set('cart', []);
 
 });
 
@@ -16,5 +17,11 @@ Template.SimexLayout.helpers({
 		return Session.get('modal');
 
 	},
+
+	oncart:function() {
+
+		return Session.get('cart_modal');
+
+	}
 
 });

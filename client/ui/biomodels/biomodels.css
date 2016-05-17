@@ -80,6 +80,13 @@ button.add_to_cart {
 
 }
 
+p.cart_alert {
+
+	color: red;
+	display: none;
+
+}
+
 p.trainer_link {
 
 	clear: both;

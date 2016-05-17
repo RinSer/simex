@@ -1,0 +1,26 @@
+div.modal hr {
+
+	width: 50%;
+	border: none;
+	color: #2b285f;
+	background-color: #2b285f;
+	height: 2px;
+
+}
+
+i.remove_item:hover {
+
+	color: red;
+	cursor: pointer;
+
+}
+
+button.place_order {
+
+	font-size: 1.2em;
+	color: #333;
+	background-color: #fff;
+	padding: 5px;
+	border-radius: 8px;
+
+}

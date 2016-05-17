@@ -158,6 +158,12 @@ Template.header.events({
 
 		Meteor.logout();
 
+	},
+
+	'click .cart_modal_on':function(event, template) {
+
+		Session.set('cart_modal', true);
+
 	}
 
 });

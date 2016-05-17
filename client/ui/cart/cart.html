@@ -1,0 +1,53 @@
+<template name="cart_modal">
+
+	<div class="modal">
+		<div class="modal_window">
+			<i class="fa fa-times modal_exit" aria-hidden="true"></i>
+			<div class="modal_form">
+				{{#unless order}}
+					{{> cart}}
+					<button class="place_order">Заказать</button>
+				{{else}}
+					{{> order_form}}
+				{{/unless}}
+			</div>
+		</div>
+	</div>
+
+</template>
+
+<template name="cart">
+
+	<h2>Вы выбрали</h2>
+	{{#each items}}
+		{{> cart_item}}
+	{{/each}}
+	<p>Итого: {{total}}р.</p>
+
+</template>
+
+<template name="cart_item">
+
+	<p id="cart_item">
+		<img src="{{biomodel.pic}}" height="30px">&nbsp;{{biomodel.title}}&nbsp;{{biomodel.price}}р.&nbsp;
+		<span><i class="fa fa-times remove_item" aria-hidden="true"></i><input style="width: 52px" type="number" title="quantity" value="{{quantity}}"></span>&nbsp;
+	</p>
+	<hr>
+
+</template>
+
+<template name="order_form">
+
+	<h2>Ваши данные</h2>
+	<form>
+		<p>Имя:<span class="alert-note">*</span><br> <input type="text" name="firstName"></p>
+		<p>Отчество:<br> <input type="text" name="secondName"></p>
+		<p>Фамилия:<span class="alert-note">*</span><br> <input type="text" name="familyName"></p>
+		<p>Email:<span class="alert-note">*</span><br> <input type="email" name="email"></p>
+		<p>Адрес:<span class="alert-note">*</span><br> <input type="text" name="address"></p>
+		<p>Телефон:<span class="alert-note">*</span><br> <input type="text" name="tel"></p>
+		<p><input type="submit" value="Продолжить" class="login_button"></p>
+	</form>
+	<h4 class="alert-note">* Пожалуйста, заполните все необходимые поля.</h4>
+
+</template>

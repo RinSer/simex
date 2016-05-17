@@ -1,7 +1,10 @@
 <template name="SimexLayout">
 
 	{{#if onmodal}}
-		{{> modal on=modal }}
+		{{> modal}}
+	{{/if}}
+	{{#if oncart}}
+		{{> cart_modal}}
 	{{/if}}
 
 	<div id="wrapper">

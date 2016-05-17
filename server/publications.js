@@ -37,6 +37,12 @@ Meteor.publish('biomodelsData', function() {
 
 });
 
+Meteor.publish('biomodelsCartData', function() {
+
+	return Biomodels.find({}, {fields: {title: 1, pic: 1, price: 1}});
+
+});
+
 // Publish a biomodel data
 Meteor.publish('biomodelData', function(biomodelId) {
 
