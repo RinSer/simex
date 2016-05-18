@@ -19,6 +19,12 @@ div.each_simulator {
 
 }
 
+div.each_simulator:last-child {
+
+	padding-bottom: 100px;
+
+}
+
 div.each_simulator h3 {
 
 	color: #333;
@@ -30,7 +36,26 @@ div.each_simulator img {
 	float: left;
 	margin-right: 25px;
 	margin-bottom: 10px;
-	max-width: 640px;
+
+}
+
+@media (min-width: 768px) {
+
+	div.each_simulator img {
+
+		max-width: 640px;
+
+	}
+
+}
+
+@media (max-width: 767px) {
+
+	div.each_simulator img {
+
+		max-width: 100%;
+
+	}
 
 }
 

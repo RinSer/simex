@@ -6,7 +6,7 @@ Template.SimexLayout.onCreated(function() {
 
 	Session.set('modal', false);
 	Session.set('cart_modal', false);
-	Session.set('cart', []);
+	Session.set('cart', {biomodels: [], simulators: []});
 
 });
 

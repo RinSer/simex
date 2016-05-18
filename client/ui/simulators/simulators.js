@@ -129,6 +129,18 @@ Template.each_simulator.helpers({
 
 });
 
+Template.each_simulator.events({
+
+	'click .delete_simulator':function(event, template) {
+
+		const id = template.data._id;
+
+		Meteor.call('deleteSimulator', id);
+
+	}
+
+});
+
 Template.manual.onCreated(function() {
 
 	this.autorun(() => {

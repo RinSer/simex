@@ -31,7 +31,7 @@ Template.cart_modal.events({
 
 	'click .place_order':function(event, template) {
 
-		if (Session.get('cart').length > 0)
+		if (Session.get('cart').biomodels.length > 0 || Session.get('cart').simulators.length > 0)
 			template.stage.set(1);
 
 	}
@@ -42,15 +42,21 @@ Template.cart.onCreated(function() {
 
 	this.autorun(() => {
 		this.subscribe('biomodelsCartData');
+		this.subscribe('simulatorsCartData');
 
 		//const ids = ["t5fMkjdBbvQkZhqCP", "SW44J4eTk7Y8ykGQ4"];
-		const ids = Session.get('cart');
+		const biomodelIds = Session.get('cart').biomodels;
+		const simulatorIds = Session.get('cart').simulators;
 
-		var items = [];
+		var items = {biomodels: [], simulators: []};
 
-		ids.forEach(function(id) {
-			items.push({biomodel: Biomodels.findOne({_id: id}), quantity: 1});
+		biomodelIds.forEach(function(id) {
+			items.biomodels.push({biomodel: Biomodels.findOne({_id: id}), quantity: 1});
 		});
+
+		simulatorIds.forEach(function(id) {
+			items.simulators.push({simulator: Simulators.findOne({_id: id}), quantity: 1});
+		})
 
 		Session.set('order', items);
 	});
@@ -59,19 +65,30 @@ Template.cart.onCreated(function() {
 
 Template.cart.helpers({
 
-	items:function() {
+	biomodels:function() {
 
-		return Session.get('order');
+		return Session.get('order').biomodels;
+
+	},
+
+	simulators:function() {
+
+		return Session.get('order').simulators;
 
 	},
 
 	total:function() {
 
-		const order = Session.get('order');
+		const biomodels = Session.get('order').biomodels;
+		const simulators = Session.get('order').simulators;
 		var total = 0;
 
-		order.forEach(function(item) {
+		biomodels.forEach(function(item) {
 			total += Math.floor(item.biomodel.price*100)*item.quantity;
+		});
+
+		simulators.forEach(function(item) {
+			total += Math.floor(item.simulator.price*100)*item.quantity;
 		});
 
 		return total/100;
@@ -79,7 +96,7 @@ Template.cart.helpers({
 
 });
 
-Template.cart_item.events({
+Template.biomodel_item.events({
 
 	'click .remove_item':function(event, template) {
 

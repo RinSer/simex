@@ -198,7 +198,7 @@ Template.each_biomodel.events({
 	'click .add_to_cart':function(event, template) {
 
 		var cart = Session.get('cart');
-		cart.push(template.data._id);
+		cart.biomodels.push(template.data._id);
 		Session.set('cart', cart);
 		template.added.set(true);
 
@@ -264,7 +264,7 @@ Template.biomodel.events({
 	'click .add_to_cart':function(event, template) {
 
 		var cart = Session.get('cart');
-		cart.push(template.data.id);
+		cart.biomodels.push(template.data.id);
 		Session.set('cart', cart);
 		$('.cart_alert').show();
 

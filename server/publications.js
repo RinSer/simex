@@ -64,6 +64,13 @@ Meteor.publish('simulatorsData', function() {
 
 });
 
+// Publish simulators cart data
+Meteor.publish('simulatorsCartData', function() {
+
+	return Simulators.find({}, {fields: {title: 1, price: 1}});
+
+});
+
 // Publish product info
 Meteor.publish('productInfo', function(product) {
 

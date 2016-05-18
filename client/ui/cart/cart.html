@@ -19,17 +19,30 @@
 <template name="cart">
 
 	<h2>Вы выбрали</h2>
-	{{#each items}}
-		{{> cart_item}}
+	{{#each biomodels}}
+		{{> biomodel_item}}
+	{{/each}}
+	{{#each simulators}}
+		{{> simulator_item}}
 	{{/each}}
 	<p>Итого: {{total}}р.</p>
 
 </template>
 
-<template name="cart_item">
+<template name="biomodel_item">
 
 	<p id="cart_item">
 		<img src="{{biomodel.pic}}" height="30px">&nbsp;{{biomodel.title}}&nbsp;{{biomodel.price}}р.&nbsp;
+		<span><i class="fa fa-times remove_item" aria-hidden="true"></i><input style="width: 52px" type="number" title="quantity" value="{{quantity}}"></span>&nbsp;
+	</p>
+	<hr>
+
+</template>
+
+<template name="simulator_item">
+
+	<p id="cart_item">
+		{{simulator.title}}&nbsp;{{simulator.price}}р.&nbsp;
 		<span><i class="fa fa-times remove_item" aria-hidden="true"></i><input style="width: 52px" type="number" title="quantity" value="{{quantity}}"></span>&nbsp;
 	</p>
 	<hr>

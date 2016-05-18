@@ -37,7 +37,26 @@ div.each_biomodel img {
 	float: left;
 	margin-right: 25px;
 	margin-bottom: 10px;
-	max-width: 640px;
+
+}
+
+@media (min-width:768px) {
+
+	div.each_biomodel img {
+
+		max-width: 640px;
+
+	}
+
+}
+
+@media (max-width: 767px) {
+
+	div.each_biomodel img {
+
+		max-width: 100%;
+
+	}
 
 }
 
