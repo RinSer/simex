@@ -57,6 +57,20 @@ Meteor.publish('biomodelData', function(biomodelId) {
 
 });
 
+// Publish simulators data
+Meteor.publish('simulatorsData', function() {
+
+	return Simulators.find({}, {fields: {title: 1, description: 1, photo: 1, price: 1}});
+
+});
+
+// Publish product info
+Meteor.publish('productInfo', function(product) {
+
+	return ProductInfo.find({product: product}, {fields: {text: 1}});
+
+});
+
 // Publish manual steps data
 Meteor.publish('manualStepsData', function() {
 

@@ -3,6 +3,132 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import { ReactiveArray } from 'meteor/templates:array';
 import { Meteor } from 'meteor/meteor';
 
+Template.simulators.onCreated(function() {
+
+	this.autorun(() => {
+		this.subscribe('simulatorsData');
+		this.subscribe('productInfo', "simulator");
+		if (Meteor.user()) {
+			if (Meteor.user().admin)
+				this.add_simulator = new ReactiveVar(false);
+		}
+	});
+
+});
+
+Template.simulators.helpers({
+
+	info:function() {
+
+		if (ProductInfo.findOne())
+			return ProductInfo.findOne();
+		else
+			return {title: false, description: false, photo: false, price: false};
+
+	},
+
+	optionsHelper:function() {
+
+		return {
+			collection: "productinfo",
+			field: "text",
+			wysiwyg: true,
+			title: "Кликни, чтобы редактировать"
+		};
+
+	},
+
+	simulators:function() {
+
+		return Simulators.find({});
+
+	},
+
+	admin:function() {
+
+		if (Meteor.user()) {
+
+			let user = Meteor.user();
+
+			return user.admin;
+
+		}
+
+	},
+
+	add_simulator:function() {
+
+		return Template.instance().add_simulator.get();
+
+	}
+
+});
+
+Template.simulators.events({
+
+	'click .simulator_add':function(event, template) {
+
+		template.add_simulator.set(!template.add_simulator.get());
+
+	}
+
+});
+
+Template.new_simulator.events({
+
+	'submit form':function(event, template) {
+
+		event.preventDefault();
+
+		const title = event.target.simulator_title.value;
+		const description = event.target.simulator_description.value;
+		const photo = event.target.simulator_photo.value;
+		const price = event.target.simulator_price.value;
+
+		const data = {title, description, photo, price};
+
+		Meteor.call('addSimulator', data, function(err, data) {
+
+			if (err) {
+				console.log(err);
+			}
+			else {
+				template.find('form').reset();
+			}
+
+		});
+
+	}
+
+});
+
+Template.each_simulator.onCreated(function() {
+
+	this.autorun(() => {
+		this.added = new ReactiveVar(false);
+	});
+
+});
+
+Template.each_simulator.helpers({
+
+	admin:function() {
+
+		if (Meteor.user())
+			return Meteor.user().admin;
+		else
+			return false;
+
+	},
+
+	added:function() {
+
+		return Template.instance().added.get();
+
+	}
+
+});
+
 Template.manual.onCreated(function() {
 
 	this.autorun(() => {

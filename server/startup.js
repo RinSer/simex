@@ -45,6 +45,56 @@ Meteor.startup(() => {
 
   }
 
+  // Dev simulators
+  const init_simulators = [
+
+    {
+      title: "Simex GI",
+      description: "Тренажер Simex GI.",
+      photo: "/p11.jpg",
+      price: 2000
+    },
+    {
+      title: "Деталь",
+      description: "Деталь для тренажера Simex GI",
+      photo: "/p21.jpg",
+      price: 1500
+    },
+
+  ];
+
+  if (Simulators.find().count() === 0) {
+
+    _.each(init_simulators, function(simulator) {
+      Simulators.insert(simulator);
+      console.log("Added "+simulator.title+" simulator.");
+    });
+
+  }
+
+  // Dev product info
+  const init_pi = [
+
+    {
+      product: "biomodel",
+      text: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+    },
+    {
+      product: "simulator",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    }
+
+  ];
+
+  if (ProductInfo.find().count() === 0) {
+
+    _.each(init_pi, function(product) {
+      ProductInfo.insert(product);
+      console.log("Added "+product.product+" info.");
+    });
+
+  }
+
   // Create manual steps
   const init_mansteps = [
 

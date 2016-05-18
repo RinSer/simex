@@ -13,11 +13,32 @@ Template.biomodels.onCreated(function() {
 			if (Meteor.user().admin)
 				this.new_biomodel = new ReactiveVar(false);
 		}
+		this.subscribe('productInfo', "biomodel");
 	});
 
 });
 
 Template.biomodels.helpers({
+
+	info:function() {
+
+		if (ProductInfo.findOne())
+			return ProductInfo.findOne();
+		else
+			return {text: false};
+
+	},
+
+	optionsHelper:function() {
+
+		return {
+			collection: "productinfo",
+			field: "text",
+			wysiwyg: true,
+			title: "Кликни, чтобы редактировать"
+		};
+
+	},
 
 	biomodels:function() {
 

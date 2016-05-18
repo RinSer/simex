@@ -1,7 +1,8 @@
 <template name="biomodels">
 
 	<section id="biomodels">
-		<h2>Все биомодели Simex</h2>
+		<h2>Биомодели</h2>
+		<p>{{> editableText context=info options=optionsHelper }}</p>
 		{{#if admin}}
 			<h1 class="biomodel_add"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Добавить биомодель</h1>
 			{{#if add_biomodel}}

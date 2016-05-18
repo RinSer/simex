@@ -1,13 +1,56 @@
-<template name="simulator">
+<template name="simulators">
 
-	<section id="simulator">
-
-		<h1>Тренажер SIMEX GI</h1>
-
+	<section id="simulators">
+		<h2>Тренажер</h2>
+		<p>{{> editableText context=info options=optionsHelper }}</p>
+		{{#if admin}}
+			<h1 class="simulator_add"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Добавить тренажер</h1>
+			{{#if add_simulator}}
+				{{> new_simulator}}
+			{{/if}}
+		{{/if}}
+		{{#each simulators}}
+			{{> each_simulator}}
+		{{/each}}
 	</section>
 
 </template>
 
+<template name="new_simulator">
+
+	<section class="new_simulator">
+		<form>
+			<input type="text" name="simulator_title" placeholder="Название">
+			<br>
+			<textarea rows="5" name="simulator_description" placeholder="Краткое описание"></textarea>
+			<br>
+			<input type="text" name="simulator_photo" placeholder="URL фотографии">
+			<br>
+			<input type="number" step="0.01" name="simulator_price" placeholder="Цена">
+			<br>
+			<input type="submit" value="Сохранить" id="submit" >
+			<br>
+		</form>
+	</section>
+
+</template>
+
+<template name="each_simulator">
+
+	<div class="each_simulator">
+		<h3>{{title}}</h3>
+		<img src="{{photo}}" style="max-width: 640px;">
+		<p><span class="each_simulator_description">{{description}} – <b>{{price}}</b> р.</span></p>
+		<button class="add_to_cart">Добавить к заказу</button>
+		{{#if admin}}
+			<button class="delete_simulator">Удалить</button>
+		{{/if}}
+		{{#if added}}
+			<p style="color: red;">Успешно добавлено!</p>
+		{{/if}}
+	</div>
+
+</template>
 
 <template name="manual">
 
