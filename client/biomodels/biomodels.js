@@ -160,6 +160,7 @@ Template.new_biomodel.events({
 Template.each_biomodel.onCreated(function() {
 
 	this.autorun(() => {
+		this.subscribe('simexgiData');
 		this.added = new ReactiveVar(false);
 	});
 
@@ -182,6 +183,15 @@ Template.each_biomodel.helpers({
 	added:function() {
 
 		return Template.instance().added.get();
+
+	},
+
+	sim_price:function() {
+
+		if (Simulators.findOne())
+			return Simulators.findOne().price;
+		else
+			return {price: false};
 
 	}
 
@@ -209,6 +219,7 @@ Template.each_biomodel.events({
 Template.biomodel.onCreated(function() {
 
 	this.autorun(() => {
+		this.subscribe('simexgiData');
 		if (Router.current().params.id) {
 			Session.set('photo_index', 0);
 			this.data.id = Router.current().params.id;
@@ -254,6 +265,15 @@ Template.biomodel.helpers({
 			wysiwyg: true,
 			title: "Кликни, чтобы редактировать"
 		};
+
+	},
+
+	sim_price:function() {
+
+		if (Simulators.findOne())
+			return Simulators.findOne().price;
+		else
+			return {price: false};
 
 	}
 

@@ -72,11 +72,16 @@ Template.users.events({
 
 		event.preventDefault();
 
-		const name = event.target.name.value;
+		const firstName = event.target.firstName.value;
+		const secondName = event.target.secondName.value;
+		const familyName = event.target.familyName.value;
 		const email = event.target.email.value;
 		const password = event.target.password.value;
 		const pcheck = event.target.password_check.value;
-		let admin_data = {name, email, password};
+		let admin_data = {firstName, familyName, email, password};
+
+		if (secondName) admin_data.secondName = secondName;
+
 		admin_data.admin = true;
 
 		if (password === pcheck) {
@@ -139,6 +144,7 @@ Template.user_row.onCreated(function() {
 	const userId = this.data._id;
 	this.autorun(() => {
 		this.subscribe('userCforms', userId);
+		this.subscribe('userOrders', userId);
 	});
 
 });
@@ -155,7 +161,7 @@ Template.user_row.helpers({
 	orders:function() {
 
 		const userId = Template.instance().data._id;
-		return false;
+		return Orders.find({user: userId}).count() > 0 ? Orders.find({user: userId}) : false;
 
 	}
 
@@ -166,6 +172,78 @@ Template.admin_row.events({
 	'click td.delete_admin':function(event, template) {
 
 		Meteor.call('deleteUser', template.data._id);
+
+	}
+
+});
+
+
+Template.user.onCreated(function() {
+
+	this.autorun(() => {
+		this.subscribe('usersData');
+		//this.subscribe('userOrders', this.data._id);
+		//this.subscribe('userCforms', this.data._id);
+	});
+
+});
+
+Template.user.helpers({
+
+	user:function() {
+
+		return Template.instance().data;
+
+	},
+
+	orders:function() {
+
+		let userId = null;
+
+		if (Template.instance().data) {
+			userId = Template.instance().data._id;
+		}
+
+		if (userId) {
+			Template.instance().subscribe('userOrders', userId);
+
+			return Orders.find({user: userId});
+		}
+		else {
+			return false;
+		}	
+
+	},
+
+	forms:function() {
+
+		let userId = null;
+
+		if (Template.instance().data) {
+			userId = Template.instance().data._id;
+		}
+
+		if (userId) {
+			Template.instance().subscribe('userCforms', userId);
+
+			return Cforms.find({user: userId});
+		}
+		else {
+			return false;
+		}	
+
+	}
+
+});
+
+
+Template.user.events({
+
+	'click a.back':function(event, template) {
+
+		event.preventDefault();
+
+		history.back();
 
 	}
 

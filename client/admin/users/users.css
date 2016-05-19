@@ -114,3 +114,26 @@ td.delete_admin:hover {
 	background-color: rgba(255, 0, 0, 0.75);
 
 }
+
+
+section.user {
+
+	margin: 25px auto;
+
+}
+
+section.user div {
+
+	margin: 25px auto;
+	padding: 10px;
+	border: 1px solid #333;
+	overflow-x: auto;
+
+}
+
+section.user div table td {
+
+	text-align: center;
+	padding: 5px;
+
+}

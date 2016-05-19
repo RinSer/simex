@@ -125,6 +125,16 @@ Template.each_simulator.helpers({
 
 		return Template.instance().added.get();
 
+	},
+
+	optionsHelper:function() {
+
+		return {
+			collection: "simulators",
+			wysiwyg: true,
+			title: "Кликни, чтобы редактировать"
+		}
+
 	}
 
 });
@@ -133,9 +143,18 @@ Template.each_simulator.events({
 
 	'click .delete_simulator':function(event, template) {
 
-		const id = template.data._id;
+		const id = template.data.simulator._id;
 
 		Meteor.call('deleteSimulator', id);
+
+	},
+
+	'click .add_to_cart':function(event, template) {
+
+		var cart = Session.get('cart');
+		cart.simulators.push(template.data.simulator._id);
+		Session.set('cart', cart);
+		template.added.set(true);
 
 	}
 

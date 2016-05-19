@@ -56,7 +56,7 @@
 		<h3><a href="/biomodels/{{_id}}">{{title}}</a></h3>
 		<a href="/biomodels/{{_id}}"><img src="{{photos.[0]}}" ></a>
 		<p><span class="each_biomodel_description">{{description}} – <b>{{price}}</b> р.</span></p>
-		<p class="trainer_price">Аренда тренажера SIMEX GI – 2 000 р.</p>
+		<p class="trainer_price">Аренда тренажера SIMEX GI – {{sim_price}} р.</p>
 		<button class="add_to_cart">Добавить к заказу</button>
 		{{#if admin}}
 			<button class="delete_biomodel">Удалить</button>
@@ -64,7 +64,7 @@
 		{{#if added}}
 			<p style="color: red;">Успешно добавлено!</p>
 		{{/if}}
-		<p class="trainer_link"><a href="#">Биомодель фиксируется в тренажер SIMEX GI</a></p>
+		<p class="trainer_link"><a href="/simulator">Биомодель фиксируется в тренажер SIMEX GI</a></p>
 	</div>
 
 </template>
@@ -73,7 +73,7 @@
 <template name="biomodel">
 
 	<section class="biomodel">
-		<h3>{{biomodel.title}}</h3>
+		<h3>{{> editableText context=biomodel options=optionsHelper field="title"}}</h3>
 		<div class="biomodel-col-2">
 			<img class="biomodel_main" src="{{current_photo}}">
 			{{#each photo in biomodel.photos}}
@@ -83,8 +83,8 @@
 		<div class="biomodel-col-2">
 			<p>{{> editableText context=biomodel options=optionsHelper field="description"}}<img style="float:right; padding: 10px;" src="{{biomodel.pic}}" height="100px"></p>
 			<h4>Цена: {{> editableText context=biomodel options=optionsHelper field="price"}} р.</h4>
-			<p class="trainer_price">Аренда тренажера SIMEX GI – 2 000 р.</p>
-			<p class="trainer_link"><a href="#">Биомодель фиксируется в тренажер SIMEX GI</a></p>
+			<p class="trainer_price">Аренда тренажера SIMEX GI – {{sim_price}} р.</p>
+			<p class="trainer_link"><a href="/simulator">Биомодель фиксируется в тренажер SIMEX GI</a></p>
 			<p>{{> editableText context=biomodel options=optionsHelper field="full_description"}}</p>
 			<button class="add_to_cart">Добавить в корзину</button>
 			<p class="cart_alert">Успешно добавлено!</p>

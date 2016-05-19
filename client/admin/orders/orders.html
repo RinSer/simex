@@ -1,0 +1,100 @@
+<template name="orders">
+
+	<section class="orders">
+		<h2>Заказы</h2>
+		<ul>
+			<li class="current all_orders">Все</li>
+			<li class="new_orders">Новые</li>
+			<li class="processed_orders">Обработанные</li>
+		</ul>
+		<div style="overflow-x: auto;">
+			<table>
+				<tr>
+					<th>ФИО</th>
+					<th>Email</th>
+					<th>Дата</th>
+					<th>Обработано</th>
+				</tr>
+				{{#each orders}}
+				<tr>
+					<td>
+						{{#if user}}
+							<a href="/users/{{user}}">
+								{{familyName}}
+								&nbsp;{{firstName}}
+								{{#if secondName}}
+									&nbsp;{{secondName}}
+								{{/if}}
+							</a>
+						{{else}}
+							{{familyName}}
+							&nbsp;{{firstName}}
+							{{#if secondName}}
+								&nbsp;{{secondName}}
+							{{/if}}
+						{{/if}}
+					</td>
+					<td>{{email}}</td>
+					<td><a href="/orders/{{_id}}">{{createdAt}}</a></td>
+					<td>
+						{{#if processed}}
+							Да
+						{{else}}
+							Нет
+						{{/if}}
+					</td>
+				</tr>
+				{{/each}}
+			</table>
+		</div>
+
+	</section>
+
+</template>
+
+
+<template name="order">
+
+	<section class="order">
+		<a href="#" class="back">Назад</a>
+		<div>
+			<label class="processed">
+				{{#if processed}}
+		        	<input type="checkbox" checked/>
+		        {{else}}
+		        	<input type="checkbox"/>
+		        {{/if}}
+		        Обработано
+		    </label>
+			{{#if user}}
+				<a href="/users/{{user}}">Профиль пользователя</a>
+			{{/if}}
+			<h3>Фамилия:&nbsp;{{familyName}}</h3>
+			<h3>Имя:&nbsp;{{firstName}}</h3>
+			{{#if secondName}}
+				<h3>Отчество:&nbsp;{{secondName}}</h3>
+			{{/if}}
+			<h3>Email:&nbsp;{{email}}</h3>
+			<h3>Адрес:&nbsp;{{address}}</h3>
+			<h3>Телефон:&nbsp;{{tel}}</h3>
+				<h2>Биомодели:</h2>
+				<ol>
+				{{#each biomodels}}
+					<li>
+						<img src="{{biomodel.pic}}" height="20px">&nbsp;{{biomodel.title}}&nbsp;
+						{{biomodel.price}}&nbsp;р.&nbsp;{{quantity}}&nbsp;шт.
+					</li>
+				{{/each}}
+			</ol>
+			<h2>Тренажер:</h2>
+			<ol>
+			{{#each simulators}}
+				<li>
+					{{simulator.title}}&nbsp;{{simulator.price}}&nbsp;р.&nbsp;{{quantity}}&nbsp;шт.
+				</li>
+			{{/each}}
+			</ol>
+		</div>
+	</section>
+
+</template>

@@ -10,9 +10,17 @@
 			<div class="new_admin">
 				<p><span class="register_error">Ошибка!</span></p>
 				<form class="add_admin">
-					<label for="name">Имя</label>
+					<label for="firstName">Имя</label>
 					<br>
-					<input type="text" id="name" name="name">
+					<input type="text" id="firstName" name="firstName">
+					<br>
+					<label for="secondName">Отчество</label>
+					<br>
+					<input type="text" id="secondName" name="secondName">
+					<br>
+					<label for="familyName">Фамилия</label>
+					<br>
+					<input type="text" id="familyName" name="familyName">
 					<br>
 					<label for="email">Email</label>
 					<br>
@@ -35,7 +43,7 @@
 		<div style="overflow-x: auto;">
 			<table>
 				<tr>
-					<th>Имя</th>
+					<th>ФИО</th>
 					<th>Email</th>
 					{{#unless admins}}
 						<th>Адрес</th>
@@ -60,7 +68,15 @@
 
 <template name="user_row">
 
-	<td>{{name}}</td>
+	<td>
+		<a href="/users/{{_id}}">
+			{{familyName}}&nbsp;
+			{{firstName}}&nbsp;
+			{{#if secondName}}
+				{{secondName}}
+			{{/if}}
+		</a>
+	</td>
 	<td>
 	{{#each emails}}
 		{{address}}&nbsp;
@@ -68,7 +84,11 @@
 	</td>
 	<td>{{address}}</td>
 	{{#if orders}}
-		<td></td>
+		<td>
+			{{#each orders}}
+				<a href="/orders/{{_id}}">{{createdAt}}</a><br>
+			{{/each}}
+		</td>
 	{{else}}
 		<td>Нет</td>
 	{{/if}}
@@ -86,12 +106,66 @@
 
 <template name="admin_row">
 
-	<td>{{name}}</td>
+	<td>
+		{{familyName}}&nbsp;
+		{{firstName}}&nbsp;
+		{{#if secondName}}
+			{{secondName}}
+		{{/if}}
+	</td>
 	<td>
 	{{#each emails}}
 		{{address}}&nbsp;
 	{{/each}}
 	</td>
 	<td class="delete_admin">Удалить</td>
+
+</template>
+
+<template name="user">
+
+	<section class="user">
+		<a href="#" class="back">Назад</a>
+		<div>
+			<table align="center">
+				<tr>
+					<th>ФИО</th>
+					<th>Email</th>
+					<th>Адрес</th>
+					<th>Заказы</th>
+					<th>Формы</th>
+				</tr>
+				<tr>
+					<td>
+						{{user.familyName}}
+						<br>{{user.firstName}}
+						{{#if user.secondName}}
+							<br>{{user.secondName}}
+						{{/if}}
+					</td>
+					<td>{{user.emails.[0].address}}</td>
+					<td>{{user.address}}</td>
+					{{#if orders}}
+						<td>
+							{{#each orders}}
+								<a href="/orders/{{_id}}">{{createdAt}}</a><br>
+							{{/each}}
+						</td>
+					{{else}}
+						<td>Нет</td>
+					{{/if}}
+					{{#if forms}}
+						<td>
+							{{#each forms}}
+								<a href="/cforms/{{_id}}">{{theme}}</a><br>
+							{{/each}}
+						</td>
+					{{else}}
+						<td>Нет</td>
+					{{/if}}
+				</tr>
+			</table>
+		</div>
+	</section>
 
 </template>

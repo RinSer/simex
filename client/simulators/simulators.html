@@ -9,8 +9,8 @@
 				{{> new_simulator}}
 			{{/if}}
 		{{/if}}
-		{{#each simulators}}
-			{{> each_simulator}}
+		{{#each simulator in simulators}}
+			{{> each_simulator simulator=simulator }}
 		{{/each}}
 	</section>
 
@@ -38,9 +38,11 @@
 <template name="each_simulator">
 
 	<div class="each_simulator">
-		<h3>{{title}}</h3>
-		<img src="{{photo}}" >
-		<p><span class="each_simulator_description">{{description}} – <b>{{price}}</b> р.</span></p>
+		<h3>{{> editableText context=simulator field="title" options=optionsHelper }}</h3>
+		<img src="{{simulator.photo}}" >
+		<p><span class="each_simulator_description">
+			{{> editableText context=simulator field="description" options=optionsHelper }}&nbsp;
+			–&nbsp;<b>{{> editableText context=simulator field="price" options=optionsHelper }}</b>р.</span></p>
 		<button class="add_to_cart">Добавить к заказу</button>
 		{{#if admin}}
 			<button class="delete_simulator">Удалить</button>

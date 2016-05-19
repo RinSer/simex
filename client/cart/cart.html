@@ -8,7 +8,11 @@
 					{{> cart}}
 					<button class="place_order">Заказать</button>
 				{{else}}
-					{{> order_form}}
+					{{#unless placed}}
+						{{> order_form}}
+					{{else}}
+						{{> order_placed}}
+					{{/unless}}
 				{{/unless}}
 			</div>
 		</div>
@@ -25,7 +29,7 @@
 	{{#each simulators}}
 		{{> simulator_item}}
 	{{/each}}
-	<p>Итого: {{total}}р.</p>
+	<p>Итого: {{total}} р.</p>
 
 </template>
 
@@ -62,5 +66,13 @@
 		<p><input type="submit" value="Продолжить" class="login_button"></p>
 	</form>
 	<h4 class="alert-note">* Пожалуйста, заполните все необходимые поля.</h4>
+
+</template>
+
+<template name="order_placed">
+
+	<h2>Спасибо!</h2>
+	<h2><img src="/simex_logo.png" style="max-width: 50%;" ></h2>
+	<p>В ближайшее время команда Simex свяжется с Вами по вопросам доставки и оплаты!</p>
 
 </template>

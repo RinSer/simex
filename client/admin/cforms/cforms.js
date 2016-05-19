@@ -27,14 +27,18 @@ Template.cforms.helpers({
 
 	forms:function() {
 
-		switch (Template.instance().status.get()) {
+		if (Cforms.find().count() > 0) {
 
-			case 0:
-				return Cforms.find({}, {sort:{createdAt: -1}});
-			case 1:
-				return Cforms.find({processed: false}, {sort:{createdAt: -1}});
-			case 2:
-				return Cforms.find({processed: true}, {sort:{createdAt: -1}});
+			switch (Template.instance().status.get()) {
+
+				case 0:
+					return Cforms.find({}, {sort:{createdAt: -1}});
+				case 1:
+					return Cforms.find({processed: false}, {sort:{createdAt: -1}});
+				case 2:
+					return Cforms.find({processed: true}, {sort:{createdAt: -1}});
+					
+			}
 
 		}
 

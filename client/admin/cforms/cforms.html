@@ -17,19 +17,24 @@
 				</tr>
 				{{#each forms}}
 				<tr>
-					<td>{{familyName}}
-						&nbsp;{{firstName}}
-						{{#if secondName}}
-							&nbsp;{{secondName}}
-						{{/if}}
-					</td>
 					<td>
 						{{#if user}}
-							<a href="/users/{{user}}">{{email}}</a>
+							<a href="/users/{{user}}">
+								{{familyName}}
+								&nbsp;{{firstName}}
+								{{#if secondName}}
+									&nbsp;{{secondName}}
+								{{/if}}
+							</a>
 						{{else}}
-							{{email}}
+							{{familyName}}
+							&nbsp;{{firstName}}
+							{{#if secondName}}
+								&nbsp;{{secondName}}
+							{{/if}}
 						{{/if}}
 					</td>
+					<td>{{email}}</td>
 					<td><a href="/cforms/{{_id}}">{{theme}}</a></td>
 					<td>
 						{{#if processed}}

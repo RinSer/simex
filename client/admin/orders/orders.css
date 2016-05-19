@@ -1,0 +1,85 @@
+section.orders h2 {
+
+	text-align: center;
+	font-size: 1.75em;
+
+}
+
+section.orders ul li {
+
+	list-style: none;
+	display: inline;
+	padding: 10px;
+	border: 1px solid #333;
+	border-radius: 4px;
+	cursor: pointer;
+
+}
+
+section.orders li:hover {
+
+	border-color: #ff0000;
+	color: #ff0000;
+
+}
+
+li.current {
+
+	background-color: #2b285f;
+	color: #fff;
+
+}
+
+section.orders table {
+
+	margin: 50px auto;
+	width: 100%;
+	text-align: center;
+
+}
+
+section.orders td {
+
+	padding: 5px;
+	border: 1px solid #aaa;
+	border-radius: 2px;
+
+}
+
+section.orders tr:hover {
+
+	color: #ff0000;
+
+}
+
+section.orders a {
+
+	color: #2b285f;
+
+}
+
+section.orders a:hover {
+
+	color: #ff0000;
+
+}
+
+section.order {
+
+	margin: 25px auto;
+
+}
+
+section.order div {
+
+	margin: 25px auto;
+	padding: 10px;
+	border: 1px solid #333;
+
+}
+
+section.order h2 {
+
+	clear: both;
+
+}

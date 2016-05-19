@@ -64,6 +64,13 @@ Meteor.publish('simulatorsData', function() {
 
 });
 
+// Publish SIMEX GI price
+Meteor.publish('simexgiData', function() {
+
+	return Simulators.find({title: "SIMEX GI"}, {fields: {price: 1}});
+
+});
+
 // Publish simulators cart data
 Meteor.publish('simulatorsCartData', function() {
 
@@ -120,6 +127,13 @@ Meteor.publish('contactsData', function() {
 
 });
 
+// Publish footer Contacts data
+Meteor.publish('footerContacts', function() {
+
+	return Contacts.find({}, {fields: {email: 1, tel: 1}});
+
+});
+
 // Publish Cforms data
 Meteor.publish('cformsData', function() {
 
@@ -149,5 +163,19 @@ Meteor.publish('userCforms', function(userId) {
 Meteor.publish('usersData', function() {
 
 	return Meteor.users.find({}, {fields: {firstName: 1, secondName: 1, familyName: 1, emails: 1, address: 1, admin: 1}});
+
+});
+
+// Publish orders data for admin
+Meteor.publish('ordersData', function() {
+
+	return Orders.find({});
+
+});
+
+// Publish orders data for each user
+Meteor.publish('userOrders', function(userId) {
+
+	return Orders.find({user: userId}, {field: {_id: 1, user: 1, createdAt: 1}});
 
 });

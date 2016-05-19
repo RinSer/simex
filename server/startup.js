@@ -49,7 +49,7 @@ Meteor.startup(() => {
   const init_simulators = [
 
     {
-      title: "Simex GI",
+      title: "SIMEX GI",
       description: "Тренажер Simex GI.",
       photo: "/p11.jpg",
       price: 2000
