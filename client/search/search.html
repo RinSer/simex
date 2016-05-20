@@ -1,0 +1,12 @@
+<template name="search">
+
+	<h2>Вы ищите: {{search_text}}</h2>
+	<section id="search_results">
+		{{#each biomodels}}
+			{{#if description}}
+				{{> each_biomodel}}
+			{{/if}}
+		{{/each}}
+	</section>
+
+</template>

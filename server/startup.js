@@ -2,6 +2,16 @@ import { Meteor } from 'meteor/meteor';
 import { _ } from 'meteor/underscore';
 
 Meteor.startup(() => {
+  // Set Biomodels collection index
+  Biomodels._dropIndex("biomodels_search");
+
+  Biomodels._ensureIndex({
+    title: 'text',
+    description: 'text',
+    full_description: 'text',
+  }, {name: "biomodels_search"},
+  {default_language: "russian"});
+
   // Set email env var
   process.env.MAIL_URL="smtp://postmaster@sandboxe25f63c8067f4f5fb093a393818f5919.mailgun.org:80141f9897f2ee0402301b30ea8d2ab3@smtp.mailgun.org:587"
   

@@ -18,21 +18,31 @@ section.news_with_text {
 	margin-bottom: 5%;
 	padding-bottom: 5%;
 	border-bottom: 1px solid #2b285f;
-	clear: both;
+
+}
+
+section.news_with_text:last-child {
+
+	margin-bottom: 25%;
 
 }
 
 section.news {
 
 	position: relative;
+	clear: both;
 
 }
 
-div.news_td {
+@media (min-width: 768px) {
 
-	position: absolute;
-	top: 5%;
-	left: 0;
+	div.news_td {
+
+		position: absolute;
+		top: 5%;
+		left: 0;
+
+	}
 
 }
 
@@ -67,6 +77,21 @@ a.news_link {
 }
 
 a.news_link:hover {
+
+	text-decoration: underline;
+
+}
+
+a.mob_news_link {
+
+	padding: 5px;
+	color: #fff;
+	text-decoration: none;
+	background-color: rgba(255, 0, 0, 1);
+
+}
+
+a.mob_news_link:hover {
 
 	text-decoration: underline;
 

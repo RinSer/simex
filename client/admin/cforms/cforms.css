@@ -98,6 +98,7 @@ section.cform div {
 .processed {
 
 	float: right;
+	padding: 5px;
 
 }
 
@@ -107,3 +108,18 @@ section.cform h2 {
 
 }
 
+button.delete {
+
+	background-color: rgba(255, 0, 0, 0.5);
+	color: #fff;
+	font-size: 1em;
+	padding: 5px;
+	float: right;
+
+}
+
+button.delete:hover {
+
+	background-color: rgba(255, 0, 0, 0.75);
+
+}

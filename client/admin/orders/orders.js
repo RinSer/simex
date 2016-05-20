@@ -154,6 +154,12 @@ Template.order.events({
 
 		history.back();
 
+	},
+
+	'click .delete':function(event, template) {
+
+		Meteor.call('deleteOrder', template.data._id);
+
 	}
 
 });

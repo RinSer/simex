@@ -16,6 +16,7 @@ Template.contacts.onCreated(function() {
 			});
 
 		});
+
 	});
 
 });
@@ -61,13 +62,20 @@ Template.contacts.helpers({
 
 		if (GoogleMaps.loaded() && Contacts.findOne()) {
 
-			let lat = Contacts.findOne().location.latitude;
-			let lng = Contacts.findOne().location.longitude;
-			return {
-				center: new google.maps.LatLng(lat, lng),
-				zoom: 15,
-				mapTypeId: google.maps.MapTypeId.ROADMAP
-			};
+			const location = Contacts.findOne().location;
+
+			if (location) {
+
+				let lat = location.latitude;
+				let lng = location.longitude;
+				
+				return {
+					center: new google.maps.LatLng(lat, lng),
+					zoom: 15,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+
+			}
 
 		}
 

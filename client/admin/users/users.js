@@ -167,6 +167,16 @@ Template.user_row.helpers({
 
 });
 
+Template.user_row.events({
+
+	'click td.delete_admin':function(event, template) {
+
+		Meteor.call('deleteUser', template.data._id);
+
+	}
+
+});
+
 Template.admin_row.events({
 
 	'click td.delete_admin':function(event, template) {

@@ -10,7 +10,7 @@
 		</section>
 		<section class="col-tm-3">
 			<div class="top_search">
-				<input type="search" name="simex_search" placeholder="Что-то ищете на Simex?" class="header_search">
+				<input type="search" name="simex_search" placeholder="Поиск биомоделей Simex" class="header_search">
 				<label for="search">
 					<i class="fa fa-search"></i>
 				</label>
@@ -41,38 +41,38 @@
 			<button class="mob_menu_button">Меню</button>
 		</div>
 		<ul>
-			<li><a class="active" href="/">НОВОСТИ</a></li>
-			<li><a href="/about">О КОМПАНИИ</a></li>
+			<li><a class="menu_link" href="/">НОВОСТИ</a></li>
+			<li><a class="menu_link" href="/about">О КОМПАНИИ</a></li>
 			<li>
 				<a class="biomodels_a" href="#">БИОМОДЕЛИ&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i></a>
 				<ul class="biomodels_list">
 					{{#each biomodels}}
-						<a href="/biomodels/{{_id}}"><img src="{{pic}}" class="biomodels_hpic" height="40px"></a>
+						<a class="menu_link biomodel_link" href="/biomodels/{{_id}}"><img src="{{pic}}" class="biomodels_hpic" height="40px"></a>
 					{{/each}}
 					{{#each biomodels}}
-						<li><a href="/biomodels/{{_id}}">{{title}}</a></li>
+						<li><a class="menu_link biomodel_link" href="/biomodels/{{_id}}">{{title}}</a></li>
 					{{/each}}
-					<li><a href="/biomodels">Все биомодели</a></li>
+					<li><a class="menu_link biomodel_link" href="/biomodels">Все биомодели</a></li>
 				</ul>
 			</li>
 			<li>
 				<a class="products" href="#">ТРЕНАЖЕР&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i></a>
 				<ul class="products_ref">
-					<li><a href="/simulator">Тренажер</a></li>
-					<li><a href="/manual">Начало работы</a></li>
+					<li><a class="menu_link product_link" href="/simulator">Тренажер</a></li>
+					<li><a class="menu_link product_link" href="/manual">Начало работы</a></li>
 				</ul>
 			</li>
-			<li><a href="/validity">ВАЛИДНОСТЬ</a></li>
-			<li><a href="/contacts">КОНТАКТЫ</a></li>
+			<li><a class="menu_link" href="/validity">ВАЛИДНОСТЬ</a></li>
+			<li><a class="menu_link" href="/contacts">КОНТАКТЫ</a></li>
 		</ul>
 		<ul class="mobile_login">
-			<li><span class="upper_hover cart_modal_on"><i class="fa fa-cart-arrow-down"></i>Оформить заказ</span></li>
+			<li><span class="cart_modal_on"><i class="fa fa-cart-arrow-down"></i>Оформить заказ</span></li>
 			{{#unless currentUser}}
-				<li><span class="upper_hover modal_on register"><i class="fa fa-user-plus"></i>Зарегистрироваться&nbsp;</span></li>
-				<li><span class="upper_hover modal_on login"><i class="fa fa-sign-in"></i>Войти</span></li>
+				<li><span class="modal_on register"><i class="fa fa-user-plus"></i>Зарегистрироваться&nbsp;</span></li>
+				<li><span class="modal_on login"><i class="fa fa-sign-in"></i>Войти</span></li>
 			{{else}}
-				<li><span class="upper_hover modal_on"><i class="fa fa-user-md"></i>&nbsp;{{user_name}}&nbsp;</span></li>
-				<li><span class="upper_hover logout"><i class="fa fa-sign-out"></i>Выйти</span></li>
+				<li><span class="modal_on"><i class="fa fa-user-md"></i>&nbsp;{{user_name}}&nbsp;</span></li>
+				<li><span class="logout"><i class="fa fa-sign-out"></i>Выйти</span></li>
 			{{/unless}}
 		</ul>
 

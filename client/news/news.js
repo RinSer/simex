@@ -136,6 +136,12 @@ Template.each_news.helpers({
 
 		return false;
 
+	},
+
+	mobile:function() {
+
+		return (window.outerWidth < 768);
+
 	}
 
 });

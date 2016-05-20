@@ -108,6 +108,8 @@ Template.cart.helpers({
 			});
 		}
 
+		Session.set('total', total/100);
+
 		return total/100;
 	}
 
@@ -248,10 +250,11 @@ Template.order_form.events({
 
 		if (firstName && familyName && email && address && tel) {
 
+			const total = Session.get('total');
 			const processed = false;
 			const createdAt = new Date();
 
-			order = {firstName, familyName, email, address, tel, processed, createdAt};
+			order = {firstName, familyName, email, address, tel, total, processed, createdAt};
 
 			if (secondName) order.secondName = secondName;
 
@@ -291,9 +294,10 @@ Template.order_form.events({
 					console.log(err);
 				}
 				else {
+					delete Session.keys['total'];
+					delete Session.keys['order'];
 					Session.set('stage', 2);
 					Session.set('cart', {biomodels:[],simulators:[]});
-					Session.set('order', {});
 				}
 
 			});

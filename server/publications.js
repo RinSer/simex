@@ -37,6 +37,19 @@ Meteor.publish('biomodelsData', function() {
 
 });
 
+Meteor.publish('biomodelsSearchData', function(search_text) {
+
+	return Biomodels.find({$text: {$search: search_text}}, 
+		{fields: {score: {$meta: 'textScore'}, 
+				title: 1, 
+				description: 1, 
+				pic: 1, 
+				photos: 1, 
+				price: 1},
+				sort: {score: {$meta: 'textScore'}}});
+
+});
+
 Meteor.publish('biomodelsCartData', function() {
 
 	return Biomodels.find({}, {fields: {title: 1, pic: 1, price: 1}});

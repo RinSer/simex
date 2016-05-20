@@ -95,6 +95,12 @@ Template.cform.events({
 
 		history.back();
 
+	},
+
+	'click .delete':function(event, template) {
+
+		Meteor.call('deleteCform', template.data._id);
+
 	}
 
 });

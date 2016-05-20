@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { Session } from 'meteor/session';
+import { Router } from 'meteor/iron:router';
 
 //Header template
 Template.header.onCreated(function() {
@@ -14,33 +15,7 @@ Template.header.onCreated(function() {
 
 Template.header.onRendered(function() {
 
-	$('.active').removeClass('active');
-	const current_url = window.location.pathname;
-	$('nav a').each(function() {
-
-		if ($(this).attr('href').localeCompare(current_url) === 0) {
-			$(this).addClass('active');
-		}
-
-	});
-
-	$('#logo_img').click(function() {
-
-			$('.active').removeClass('active');
-			const current_url = window.location.pathname;
-			$('nav a').each(function() {
-
-			if ($(this).attr('href').localeCompare(current_url) === 0) {
-				$(this).addClass('active');
-			}
-
-		});
-
-	});
-
-	$('nav a').click(function() {
-		$('.active').removeClass('active');
-		$(this).addClass('active');
+	$('a.menu_link').click(function() {
 		if ($(window).width() < 768) {
 			$('nav > ul').toggle('slow');
 		}
@@ -66,37 +41,45 @@ Template.header.onRendered(function() {
 		$('ul.biomodels_list').slideToggle();
 	});
 
-	$('a.biomodels_a, ul.biomodels_list').mouseenter(function() {
-		$('ul.biomodels_list').show();
-	});
-
-	$('a.biomodels_a').mouseleave(function() {
-		if ($('ul.biomodels_list').is(':hover') === false) {
-			$('ul.biomodels_list').hide();
-		}
-	});
-
-	$('ul.biomodels_list').mouseleave(function() {
-		$('ul.biomodels_list').hide();
-	});
-
 	$('a.products').click(function() {
 		$('ul.products_ref').slideToggle();
 	});
 
-	$('a.products, ul.products_ref').mouseenter(function() {
-		$('ul.products_ref').show();
-	});
-
-	$('a.products').mouseleave(function() {
-		if ($('ul.products_ref').is(':hover') === false) {
-			$('ul.products_ref').hide();
-		}
-	});
-
-	$('ul.products_ref').mouseleave(function() {
+	$('a.product_link').click(function() {
 		$('ul.products_ref').hide();
 	});
+
+	if ($(window).width() > 767) {
+
+		$('a.biomodels_a, ul.biomodels_list').mouseenter(function() {
+			$('ul.biomodels_list').show();
+		});
+
+		$('a.biomodels_a').mouseleave(function() {
+			if ($('ul.biomodels_list').is(':hover') === false) {
+				$('ul.biomodels_list').hide();
+			}
+		});
+
+		$('ul.biomodels_list').mouseleave(function() {
+			$('ul.biomodels_list').hide();
+		});
+
+		$('a.products, ul.products_ref').mouseenter(function() {
+			$('ul.products_ref').show();
+		});
+
+		$('a.products').mouseleave(function() {
+			if ($('ul.products_ref').is(':hover') === false) {
+				$('ul.products_ref').hide();
+			}
+		});
+
+		$('ul.products_ref').mouseleave(function() {
+			$('ul.products_ref').hide();
+		});
+
+	}
 
 });
 
@@ -163,6 +146,23 @@ Template.header.events({
 	'click .cart_modal_on':function(event, template) {
 
 		Session.set('cart_modal', true);
+
+	},
+
+	'click .biomodel_link':function(event, template) {
+
+		$('ul.biomodels_list').hide();
+		if ($(window).width() < 768) {
+			$('nav > ul').toggle('slow');
+		}
+
+	},
+
+	'change input.header_search':function(event, template) {
+
+		const search_text = event.currentTarget.value;
+
+		Router.go('/search='+search_text);
 
 	}
 
