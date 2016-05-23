@@ -55,4 +55,10 @@ section.col-ft-3 {
 
 	}
 
+	section.col-ft-3:last-child {
+
+		padding-bottom: 50px;
+
+	}
+
 }

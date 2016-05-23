@@ -171,20 +171,26 @@ Template.user_profile.events({
 		
 		if (Meteor.user()) {
 
-			const id = Meteor.user()._id;
+			let sure = confirm("Вы уверены, что хотите удалить свой аккаунт?");
 
-			Meteor.logout();
+			if (sure) {
 
-			Meteor.call('deleteUser', id, function(err, data) {
+				const id = Meteor.user()._id;
 
-				if (err) {
-					console.log(err);
-				}
-				else {
-					document.location.reload(true);
-				}
+				Meteor.logout();
 
-			});
+				Meteor.call('deleteUser', id, function(err, data) {
+
+					if (err) {
+						console.log(err);
+					}
+					else {
+						document.location.reload(true);
+					}
+
+				});
+
+			}
 
 		}
 

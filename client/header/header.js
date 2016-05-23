@@ -16,7 +16,7 @@ Template.header.onCreated(function() {
 Template.header.onRendered(function() {
 
 	$('a.menu_link').click(function() {
-		if ($(window).width() < 768) {
+		if ($(window).width() < 767) {
 			$('nav > ul').toggle('slow');
 		}
 	});
@@ -165,25 +165,5 @@ Template.header.events({
 		Router.go('/search='+search_text);
 
 	}
-
-});
-
-
-Template.admin_panel.onRendered(function() {
-
-	$('.active').removeClass('active');
-	const current_url = window.location.pathname;
-	$('ul.admin_menu a').each(function() {
-
-		if ($(this).attr('href').localeCompare(current_url) === 0) {
-			$(this).addClass('active');
-		}
-
-	});
-
-	$('ul.admin_menu a').click(function() {
-		$('.active').removeClass('active');
-		$(this).addClass('active');
-	});
 
 });

@@ -157,7 +157,7 @@ Template.contact_form.events({
 
 			// Send form to the DB and email
 			Meteor.call('addCform', form);
-			//Meteor.call('sendEmail', mail);
+			Meteor.call('sendEmail', mail);
 
 			// Clear form and show alert note
 			template.find('form.contact_form').reset();
