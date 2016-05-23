@@ -1,1 +1,1 @@
-Simex app
+Simex app beta version
