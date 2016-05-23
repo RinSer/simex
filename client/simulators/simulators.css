@@ -191,6 +191,7 @@ section#manual h2 {
 div.manual_step {
 
 	margin: 50px auto;
+	clear: both;
 
 }
 
@@ -199,6 +200,7 @@ div.photo_index {
 	position: relative;
 	float: left;
 	margin-right: 25px;
+	display: block;
 
 }
 
@@ -234,7 +236,7 @@ div.double_index {
 
 button#print_manual {
 
-	margin: 25px auto;
+	margin: 50px auto;
 	padding: 10px;
 	font-size: 1.5em;
 	color: #333;

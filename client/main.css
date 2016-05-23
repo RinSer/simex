@@ -65,6 +65,12 @@ button {
 
 }
 
+.clear {
+
+	clear: both;
+
+}
+
 div#wrapper {
 
 	min-height: 100vh;
@@ -80,32 +86,12 @@ section#main {
 
 }
 
-@media (min-width: 992px) {
-
-	section#main {
-
-		width: 70%;
-
-	}
-
-}
-
-@media (max-width: 991px) {
-
-	section#main {
-
-		width: 80%;
-
-	}
-
-}
-
 @media (min-width: 768px) {
 
 	section#main {
 
+		width: 70%;
 		padding-bottom: 125px;
-		width: 80%;
 
 	}
 

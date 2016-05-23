@@ -329,7 +329,7 @@ Template.manual_step.helpers({
 		return {
 			collection: "manualsteps",
 			wysiwyg: true,
-			editor: "froala",
+			//editor: "froala",
 			title: "Кликни, чтобы редактировать"
 		};
 

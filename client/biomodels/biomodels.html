@@ -39,7 +39,7 @@
 			<br>
 		{{/if}}
 		{{#each photo in photos}}
-			<div>
+			<div style="margin-bottom: 100px;">
 				<i class="{{@index}} fa fa-times biomodel_remove_photo" aria-hidden="true"></i>
 				<img src="{{photo}}" height="50px">
 			</div>
@@ -89,6 +89,7 @@
 			<button class="add_to_cart">Добавить в корзину</button>
 			<p class="cart_alert">Успешно добавлено!</p>
 		</div>
+		<div class="clear"></div>
 	</section>
 
 </template>
