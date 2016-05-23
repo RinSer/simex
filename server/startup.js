@@ -3,7 +3,7 @@ import { _ } from 'meteor/underscore';
 
 Meteor.startup(() => {
   // Set Biomodels collection index
-  Biomodels._dropIndex("biomodels_search");
+  // Biomodels._dropIndex("biomodels_search");
 
   Biomodels._ensureIndex({
     title: 'text',
