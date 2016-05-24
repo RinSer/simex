@@ -47,12 +47,12 @@
 				<a class="biomodels_a" href="#">БИОМОДЕЛИ&nbsp;<i class="fa fa-caret-down" aria-hidden="true"></i></a>
 				<ul class="biomodels_list">
 					{{#each biomodels}}
-						<a class="menu_link biomodel_link" href="/biomodels/{{_id}}"><img src="{{pic}}" class="biomodels_hpic" height="40px"></a>
+						<a class="biomodel_link" href="/biomodels/{{_id}}"><img src="{{pic}}" class="biomodels_hpic" height="40px"></a>
 					{{/each}}
 					{{#each biomodels}}
-						<li><a class="menu_link biomodel_link" href="/biomodels/{{_id}}">{{title}}</a></li>
+						<li><a class="biomodel_link" href="/biomodels/{{_id}}">{{title}}</a></li>
 					{{/each}}
-					<li><a class="menu_link biomodel_link" href="/biomodels">Все биомодели</a></li>
+					<li><a class="biomodel_link" href="/biomodels">Все биомодели</a></li>
 				</ul>
 			</li>
 			<li>
