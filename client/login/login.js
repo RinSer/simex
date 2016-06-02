@@ -75,8 +75,11 @@ Template.register.events({
 		const familyName = event.target.familyName.value;
 		const email = event.target.email.value;
 		const address = event.target.address.value ? event.target.address.value: false;
+		const news = event.target.newsletter.value;
 		const password = event.target.password.value;
 		const pcheck = event.target.pcheck.value;
+
+		console.log(news);
 
 		if (password === pcheck) {
 			Meteor.call('addUser', {

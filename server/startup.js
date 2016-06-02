@@ -15,6 +15,42 @@ Meteor.startup(() => {
   // Set email env var
   //process.env.MAIL_URL="smtp://postmaster@sandboxe25f63c8067f4f5fb093a393818f5919.mailgun.org:80141f9897f2ee0402301b30ea8d2ab3@smtp.mailgun.org:587"
   
+  // Create dev start page data
+  const init_start = [
+
+    {
+      title: "Выгодная стоимость практического тренинга",
+      description: "в сравнении с компьютерными тренажерами, муляжами и лабораторными животными.",
+      photo: "/placeholder.png"
+    },
+    {
+      title: "Оригинальные детали, разборная конструкция тренажера",
+      description: "удобно транспортировать и легко собирать тренажер.",
+      photo: "/placeholder.png"
+    },
+    {
+      title: "Разрешительная документация",
+      description: "позволяет перевозить биомодели в другие города.",
+      photo: "/placeholder1.jpg"
+    },
+    {
+      title: "Закупка биоматериала на сертифицированных предприятиях",
+      description: "надежный профиль безопасности позволяет проводить обучение вне специализированных тренинг-центров.",
+      photo: "/placeholder1.jpg"
+    }
+
+  ];
+
+  // Add start page data if none
+  if (Start.find().count() === 0) {
+
+    _.each(init_start, function(start) {
+      Start.insert(start);
+      console.log("Added "+start.title);
+    });
+
+  }
+
   // Create dev biomodels
   const init_biomodels = [
 
@@ -165,7 +201,8 @@ Meteor.startup(() => {
         familyName: "Test1",
         email: "test1@test.com",
         password: "123",
-        address: "test1 address"
+        address: "test1 address",
+        news: true
     },
     {
         firstName: "test2",
@@ -173,7 +210,8 @@ Meteor.startup(() => {
         familyName: "Test2",
         email: "test2@test.com",
 		    password: "123",
-        address: "test2 address"
+        address: "test2 address",
+        news: false
     },
     {
         firstName: "test3",
@@ -181,7 +219,8 @@ Meteor.startup(() => {
         familyName: "Test3",
         email: "test3@test.com",
         password: "123",
-        address: "test3 address"
+        address: "test3 address",
+        news: true
     },
     {
         firstName: "test4",
@@ -189,7 +228,8 @@ Meteor.startup(() => {
         familyName: "Test4",
         email: "test4@test.com",
         password: "123",
-        address: "test4 address"
+        address: "test4 address",
+        news: false
     },
     {
         firstName: "test5",
@@ -197,7 +237,8 @@ Meteor.startup(() => {
         familyName: "Test5",
         email: "test5@test.com",
         password: "123",
-        address: "test5 address"
+        address: "test5 address",
+        news: true
     }
   ];
   // Add users if none exist

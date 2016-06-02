@@ -8,6 +8,7 @@ Accounts.onCreateUser(function(options, user) {
 	user.familyName = options.familyName;
 	user.admin = options.admin || false;
 	user.address = options.address || false;
+	user.news = options.news || false;
 	return user;
 });
 
@@ -19,6 +20,7 @@ Meteor.publish('userData', function() {
 		secondName: 1,
 		familyName: 1,
 		address: 1,
+		news: 1,
 		admin: 1
 	}});
 });
@@ -175,7 +177,7 @@ Meteor.publish('userCforms', function(userId) {
 // Publish users data for admin
 Meteor.publish('usersData', function() {
 
-	return Meteor.users.find({}, {fields: {firstName: 1, secondName: 1, familyName: 1, emails: 1, address: 1, admin: 1}});
+	return Meteor.users.find({}, {fields: {firstName: 1, secondName: 1, familyName: 1, emails: 1, address: 1, news: 1, admin: 1}});
 
 });
 

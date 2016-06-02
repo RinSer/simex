@@ -36,10 +36,11 @@
 	<h2><i class="fa fa-user-plus"></i>&nbsp;Зарегистрироваться</h2>
 	<span class="register_error">Ошибка!</span>
 	<form>
+		<p>Фамилия:<br> <input type="text" name="familyName"></p>
 		<p>Имя:<br> <input type="text" name="firstName"></p>
 		<p>Отчество:<br> <input type="text" name="secondName"></p>
-		<p>Фамилия:<br> <input type="text" name="familyName"></p>
 		<p>Email:<br> <input type="email" name="email"></p>
+		<label>Подписаться на рассылку новостей Simex: <input type="checkbox" name="newsletter" style="width: 5%;"></label>
 		<p>Адрес:<br> <input type="text" name="address"></p>
 		<p>Пароль:<br> <input id="password" type="password" name="password"></p>
 		<span class="login_error">Не совпадают!</span>
@@ -53,11 +54,11 @@
 
 	{{#unless profile_change}}
 		<h2>Ваш профиль</h2>
+		<p><b>Фамилия:</b>&nbsp;{{profile.familyName}}</p>
 		<p><b>Имя:</b>&nbsp;{{profile.firstName}}</p>
 		{{#if profile.secondName}}
 			<p><b>Отчество:</b>&nbsp;{{profile.secondName}}</p>
 		{{/if}}
-		<p><b>Фамилия:</b>&nbsp;{{profile.familyName}}</p>
 		<p><b>Email:</b>&nbsp;{{profile.emails.[0].address}}</p>
 		{{#if profile.address}}
 			<p><b>Адрес:</b>&nbsp;{{profile.address}}</p>
@@ -67,10 +68,11 @@
 	{{else}}
 		<span class="register_error">Ошибка!</span>
 		<form>
+			<p>Фамилия:<br> <input type="text" name="familyName"></p>
 			<p>Имя:<br> <input type="text" name="firstName"></p>
 			<p>Отчество:<br> <input type="text" name="secondName"></p>
-			<p>Фамилия:<br> <input type="text" name="familyName"></p>
 			<p>Email:<br> <input type="email" name="email"></p>
+			<label>Подписаться на рассылку новостей Simex: <input type="checkbox" name="newsletter" style="width: 5%;"></label>
 			<p>Адрес:<br> <input type="text" name="address"></p>
 			<p>Пароль:<br> <input id="password" type="password" name="password"></p>
 			<span class="login_error">Не совпадают!</span>
