@@ -1,0 +1,9 @@
+<template name="newsletter">
+
+	<section id="newsletter">
+		<h2>Список email пользователей, подписавшихся на рассылку новостей:</h2>
+		<p id="emails">{{#each users}}{{emails.[0].address}}&nbsp;{{/each}}</p>
+		<button id="copy">Копировать</button>
+	</section>
+
+</template>

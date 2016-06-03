@@ -191,6 +191,13 @@ Meteor.publish('ordersData', function() {
 // Publish orders data for each user
 Meteor.publish('userOrders', function(userId) {
 
-	return Orders.find({user: userId}, {field: {_id: 1, user: 1, createdAt: 1}});
+	return Orders.find({user: userId}, {fields: {_id: 1, user: 1, createdAt: 1}});
+
+});
+
+// Publish start data
+Meteor.publish('startData', function() {
+
+	return Start.find({}, {fields: {title: 1, description: 1, photo: 1}});
 
 });

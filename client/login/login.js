@@ -75,11 +75,9 @@ Template.register.events({
 		const familyName = event.target.familyName.value;
 		const email = event.target.email.value;
 		const address = event.target.address.value ? event.target.address.value: false;
-		const news = event.target.newsletter.value;
+		const news = event.target.newsletter.checked;
 		const password = event.target.password.value;
 		const pcheck = event.target.pcheck.value;
-
-		console.log(news);
 
 		if (password === pcheck) {
 			Meteor.call('addUser', {
@@ -88,6 +86,7 @@ Template.register.events({
 									familyName,
 									email,
 									address,
+									news,
 									password
 						}, function(err, data) {
 
@@ -164,6 +163,15 @@ Template.user_profile.helpers({
 
 		return Template.instance().change_profile.get();
 
+	},
+
+	newsletter:function() {
+
+		if (Meteor.user().news)
+			return "checked";
+		else
+			return "unchecked";
+
 	}
 
 });
@@ -215,8 +223,10 @@ Template.user_profile.events({
 		const familyName = event.target.familyName.value;
 		const email = event.target.email.value;
 		const address = event.target.address.value;
+		const news = event.target.newsletter.checked;
 		const password = event.target.password.value;
 		const pcheck = event.target.pcheck.value;
+		const newsletter = Meteor.user().news;
 
 		let newData = {};
 
@@ -224,8 +234,9 @@ Template.user_profile.events({
 		if (secondName) newData.secondName = secondName;
 		if (familyName) newData.familyName = familyName;
 		if (address) newData.address = address;
+		newData.news = news;
 
-		if (!firstName && !secondName && !familyName && !address) {
+		if (!firstName && !secondName && !familyName && !address && news===newsletter) {
 			newData = false;
 		}
 

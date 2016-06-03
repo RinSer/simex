@@ -1,0 +1,176 @@
+section#start {
+
+	margin-bottom: 25%;
+
+}
+
+div#start_img {
+
+	width: 50%;
+	height: 250px;
+	margin: 0 auto;
+	background: url('/simex_start.jpg') no-repeat center center;
+
+}
+
+section#start h2 {
+
+	font-size: 2em;
+	text-align: center;
+
+}
+
+section.start_item {
+
+	padding: 20px;
+	clear: both;
+
+}
+
+section.start_item img {
+
+	padding: 15px;
+
+}
+
+section.start_item:nth-child(odd) img {
+
+	float: left;
+
+}
+
+section.start_item:nth-child(even) img {
+
+	float: right;
+
+}
+
+section#register_now {
+
+	text-align: center;
+	margin: 50px auto;
+	padding: 10px;
+	font-size: 1.5em;
+	color: #333;
+	background-color: #fff;
+	border-radius: 8px;
+	border: 1px solid #333;
+	cursor: pointer;
+	width: 100%;
+
+}
+
+section#register_now:hover {
+
+	background-color: #ff0000;
+	color: #fff;
+	border-color: #fff;
+
+}
+
+section#register_now:active {
+
+	border: none;
+
+}
+
+@media (min-width: 768px) {
+
+	section.start_item img {
+
+		width: 300px;
+
+	}
+
+}
+
+@media (max-width: 767px) {
+
+	div#start_img {
+
+		display: none;
+
+	}
+
+	section.start_item img {
+
+		width: 100%;
+
+	}
+
+}
+
+/*** Admin components ***/
+
+h1.add_item {
+
+	text-align: right;
+	color: #ff0000;
+	border: 2px solid #ff0000;
+	padding: 5px;
+	cursor: pointer;
+
+}
+
+h1.add_item:hover {
+
+	background-color: #2b285f;
+
+}
+
+h1.add_item:active {
+
+	border: 1px solid #fff;
+
+}
+
+button.delete_item {
+
+	border: none;
+	background-color: #ff0000;
+	color: #fff;
+	font-size: 1.25em;
+	padding: 5px;
+	cursor: pointer;
+
+}
+
+button.delete_item:hover {
+
+	color: #2b285f;
+
+}
+
+button.delete_item:active {
+
+	border: 1px solid #2b285f;
+
+}
+
+section.new_item {
+
+	padding: 10px;
+	margin: 50px auto;
+	width: 90%;
+
+}
+
+section.new_item input, textarea {
+
+	width: 100%;
+	margin-bottom: 10px;
+	padding: 5px;
+	font-size: 1.2em;
+
+}
+
+button.save_item {
+
+	color: #333;
+	background-color: #fff;
+	font-size: 1.25em;
+	padding: 5px;
+	text-align: center;
+	margin-bottom: 10px;
+
+}

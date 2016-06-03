@@ -47,6 +47,7 @@
 					<th>Email</th>
 					{{#unless admins}}
 						<th>Адрес</th>
+						<th>Рассылка</th>
 						<th>Заказы</th>
 						<th>Формы</th>
 					{{/unless}}
@@ -83,6 +84,11 @@
 	{{/each}}
 	</td>
 	<td>{{address}}</td>
+	{{#if news}}
+		<td>Подписан</td>
+	{{else}}
+		<td>Не подписан</td>
+	{{/if}}
 	{{#if orders}}
 		<td>
 			{{#each orders}}
