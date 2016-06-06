@@ -140,7 +140,6 @@ Template.contact_form.events({
 		if (Meteor.userId()) form.user = Meteor.userId();
 
 		// Send form to email
-
 		if (surname && name && email && theme && message) {
 
 			let signed_message = message+"\n\n"+name+" "+sndname+" "+surname+", "+date;
@@ -149,7 +148,7 @@ Template.contact_form.events({
 			}
 
 			const mail = {
-				to: "vazzbrazz@gmail.com",
+				to: "simex.order@gmail.com",
 				from: email,
 				subject: "Контактная форма: "+theme,
 				text: signed_message

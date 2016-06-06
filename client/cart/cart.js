@@ -288,6 +288,20 @@ Template.order_form.events({
 
 			}
 
+			// Send order to email
+			let order_message = "Пользователь: "+firstName+" "+secondName+" "+familyName+", адрес: "+address+", тел.: "+tel;
+			order_message += " хочет оформить заказ.";
+
+			const mail = {
+				to: "simex.order@gmail.com",
+				from: email,
+				subject: "Новый заказ",
+				text: order_message
+			}
+			
+			Meteor.call('sendEmail', mail);
+
+			// Add order to the db
 			Meteor.call('addOrder', order, function(err, data) {
 
 				if (err) {

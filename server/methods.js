@@ -14,7 +14,6 @@ Meteor.methods({
 
 	    
 	   
-		    console.log(process.env.MAIL_URL);
 		    Email.send({
 		    	to: mail.to,
 		    	from: mail.from,
