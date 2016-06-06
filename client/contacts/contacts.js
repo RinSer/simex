@@ -149,7 +149,7 @@ Template.contact_form.events({
 			}
 
 			const mail = {
-				to: "serj.dukareff@gmail.com",
+				to: "vazzbrazz@gmail.com",
 				from: email,
 				subject: "Контактная форма: "+theme,
 				text: signed_message

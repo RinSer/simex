@@ -39,6 +39,12 @@ section.start_item:nth-child(odd) img {
 
 }
 
+section.start_item:nth-child(even) {
+
+	text-align: right;
+
+}
+
 section.start_item:nth-child(even) img {
 
 	float: right;

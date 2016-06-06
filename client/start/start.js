@@ -66,6 +66,27 @@ Template.start.events({
 
 		template.add_item.set(!template.add_item.get());
 
+	},
+
+	'click .save_item':function(event, template) {
+
+		const title = template.find('[name=title]').value;
+		const description = template.find('[name=description]').value;
+		const photo = template.find('[name=photo]').value;
+
+		const data = {title, description, photo};
+
+		Meteor.call('addStart', data, function(err, data) {
+
+			if (err) {
+				console.log(err);
+			}
+			else {
+				template.add_item.set(false);
+			}
+
+		});
+
 	}
 
 });
@@ -93,22 +114,6 @@ Template.start_item.events({
 		const id = template.data.item._id;
 
 		Meteor.call('deleteStart', id);
-
-	}
-
-});
-
-Template.new_start_item.events({
-
-	'click .save_item':function(event, template) {
-
-		const title = template.find('[name=title]').value;
-		const description = template.find('[name=description]').value;
-		const photo = template.find('[name=photo]').value;
-
-		const data = {title, description, photo};
-
-		Meteor.call('addStart', data);
 
 	}
 
