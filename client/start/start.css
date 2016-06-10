@@ -9,7 +9,8 @@ div#start_img {
 	width: 50%;
 	height: 250px;
 	margin: 0 auto;
-	background: url('/simex_start.png') no-repeat center center;
+	background: url('/simex_logo.png') no-repeat center center;
+	background-size: 75% 60%;
 
 }
 
