@@ -6,11 +6,40 @@ section#start {
 
 div#start_img {
 
-	width: 50%;
 	height: 250px;
 	margin: 0 auto;
 	background: url('/simex_logo.png') no-repeat center center;
-	background-size: 75% 60%;
+	background-size: 75% 75%;
+
+}
+
+@media (min-width: 1600px) {
+
+	div#start_img {
+
+		width: 50%;
+
+	}
+
+}
+
+@media (min-width: 1171px) and (max-width: 1599px) {
+
+	div#start_img {
+
+		width: 75%;
+
+	}
+
+}
+
+@media (max-width: 1170px) {
+
+	div#start_img {
+
+		width: 90%;
+
+	}
 
 }
 
