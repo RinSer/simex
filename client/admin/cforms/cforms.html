@@ -1,54 +1,58 @@
 <template name="cforms">
 
-	<section class="cforms">
-		<h2>Контактные формы</h2>
-		<ul>
-			<li class="current all_cforms">Все</li>
-			<li class="new_cforms">Новые</li>
-			<li class="processed_cforms">Обработанные</li>
-		</ul>
-		<div style="overflow-x: auto;">
-			<table>
-				<tr>
-					<th>ФИО</th>
-					<th>Email</th>
-					<th>Тема</th>
-					<th>Обработано</th>
-				</tr>
-				{{#each forms}}
-				<tr>
-					<td>
-						{{#if user}}
-							<a href="/users/{{user}}">
+	{{#if Template.subscriptionsReady}}
+		<section class="cforms">
+			<h2>Контактные формы</h2>
+			<ul>
+				<li class="current all_cforms">Все</li>
+				<li class="new_cforms">Новые</li>
+				<li class="processed_cforms">Обработанные</li>
+			</ul>
+			<div style="overflow-x: auto;">
+				<table>
+					<tr>
+						<th>ФИО</th>
+						<th>Email</th>
+						<th>Тема</th>
+						<th>Обработано</th>
+					</tr>
+					{{#each forms}}
+					<tr>
+						<td>
+							{{#if user}}
+								<a href="/users/{{user}}">
+									{{familyName}}
+									&nbsp;{{firstName}}
+									{{#if secondName}}
+										&nbsp;{{secondName}}
+									{{/if}}
+								</a>
+							{{else}}
 								{{familyName}}
 								&nbsp;{{firstName}}
 								{{#if secondName}}
 									&nbsp;{{secondName}}
 								{{/if}}
-							</a>
-						{{else}}
-							{{familyName}}
-							&nbsp;{{firstName}}
-							{{#if secondName}}
-								&nbsp;{{secondName}}
 							{{/if}}
-						{{/if}}
-					</td>
-					<td>{{email}}</td>
-					<td><a href="/cforms/{{_id}}">{{theme}}</a></td>
-					<td>
-						{{#if processed}}
-							Да
-						{{else}}
-							Нет
-						{{/if}}
-					</td>
-				</tr>
-				{{/each}}
-			</table>
-		</div>
+						</td>
+						<td>{{email}}</td>
+						<td><a href="/cforms/{{_id}}">{{theme}}</a></td>
+						<td>
+							{{#if processed}}
+								Да
+							{{else}}
+								Нет
+							{{/if}}
+						</td>
+					</tr>
+					{{/each}}
+				</table>
+			</div>
 
-	</section>
+		</section>
+	{{else}}
+		{{> loader}}
+	{{/if}}
 
 </template>
 

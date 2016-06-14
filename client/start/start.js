@@ -6,6 +6,7 @@ import { Meteor } from 'meteor/meteor';
 Template.start.onCreated(function() {
 
 	this.autorun(() => {
+		this.subscribe('startHeadingData');
 		this.subscribe('startData');
 		if (Meteor.user()) {
 			if (Meteor.user().admin)
@@ -29,12 +30,19 @@ Template.start.helpers({
 
 	},
 
+	heading:function() {
+
+		return StartHeading.findOne();
+
+	},
+
 	optionsHelper:function() {
 
 		return {
-			collection: "start",
+			collection: "startheading",
 			wysiwyg: true,
-			title: "Кликни, чтобы редактировать"
+			title: "Кликни, чтобы редактировать",
+			field: "text"
 		};
 
 	},
@@ -102,6 +110,16 @@ Template.start_item.helpers({
 			return user.admin;
 
 		}
+
+	},
+
+	optionsHelper:function() {
+
+		return {
+			collection: "start",
+			wysiwyg: true,
+			title: "Кликни, чтобы редактировать"
+		};
 
 	}
 

@@ -1,18 +1,22 @@
 <template name="simulators">
 
-	<section id="simulators">
-		<h2>Тренажер</h2>
-		<p>{{> editableText context=info options=optionsHelper }}</p>
-		{{#if admin}}
-			<h1 class="simulator_add"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Добавить тренажер</h1>
-			{{#if add_simulator}}
-				{{> new_simulator}}
+	{{#if Template.subscriptionsReady}}
+		<section id="simulators">
+			<h2>Тренажер</h2>
+			<p>{{> editableText context=info options=optionsHelper }}</p>
+			{{#if admin}}
+				<h1 class="simulator_add"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Добавить тренажер</h1>
+				{{#if add_simulator}}
+					{{> new_simulator}}
+				{{/if}}
 			{{/if}}
-		{{/if}}
-		{{#each simulator in simulators}}
-			{{> each_simulator simulator=simulator }}
-		{{/each}}
-	</section>
+			{{#each simulator in simulators}}
+				{{> each_simulator simulator=simulator }}
+			{{/each}}
+		</section>
+	{{else}}
+		{{> loader}}
+	{{/if}}
 
 </template>
 
@@ -56,23 +60,27 @@
 
 <template name="manual">
 
-	<section id="manual">
+	{{#if Template.subscriptionsReady}}
+		<section id="manual">
 
-		<div id="print_manual">
-			<h2>Инструкция по установке тренажера</h2>
-			{{#if admin}}
-				<h1 class="add_step"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Добавить инструкцию</h1>
-				{{#if add_step}}
-					{{> new_manual_step}}
+			<div id="print_manual">
+				<h2>Инструкция по установке тренажера</h2>
+				{{#if admin}}
+					<h1 class="add_step"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Добавить инструкцию</h1>
+					{{#if add_step}}
+						{{> new_manual_step}}
+					{{/if}}
 				{{/if}}
-			{{/if}}
-			{{#each step in steps}}
-				{{> manual_step step=step }}
-			{{/each}}
-		</div>
-		<button id="print_manual">Распечатать</button>
+				{{#each step in steps}}
+					{{> manual_step step=step }}
+				{{/each}}
+			</div>
+			<button id="print_manual">Распечатать</button>
 
-	</section>
+		</section>
+	{{else}}
+		{{> loader}}
+	{{/if}}
 
 </template>
 

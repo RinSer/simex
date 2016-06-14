@@ -1,60 +1,64 @@
 <template name="contacts">
 
-	<section class="contacts">
-		<div class="contacts-sm-2">
-			<h3>Наш адрес:</h3>
-			<p>{{> editableText context=contacts options=optionsHelper field="address"}}</p>
-			{{#unless admin}}
-			<ul>
-				<li><a href="mailto:{{contacts.email}}">
-					<i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;
-					{{contacts.email}}
-				</a></li>
-				<li><a href="tel:{{contacts.tel}}">
-					<i class="fa fa-phone" aria-hidden="true"></i>&nbsp;
-					{{contacts.tel}}
-				</a></li>
-				<li><a href="http://{{contacts.web}}" target="_blank">
-					<i class="fa fa-globe" aria-hidden="true"></i>&nbsp;
-					{{contacts.web}}
-				</a></li>
-			</ul>
-			{{else}}
-			<ul>
-				<li>
-					<i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;
-					{{> editableText context=contacts options=optionsHelper field="email"}}
-				</li>
-				<li>
-					<i class="fa fa-phone" aria-hidden="true"></i>&nbsp;
-					{{> editableText context=contacts options=optionsHelper field="tel"}}
-				</li>
-				<li>
-					<i class="fa fa-globe" aria-hidden="true"></i>&nbsp;
-					{{> editableText context=contacts options=optionsHelper field="web"}}
-				</li>
-			</ul>
-			<h3>Координаты на карте:</h3>
-			<p>Широта:&nbsp;
-				{{> editableText context=contacts options=optionsHelper field="location.latitude"}}
-			</p>
-			<p>Долгота:&nbsp;
-				{{> editableText context=contacts options=optionsHelper field="location.longitude"}}
-			</p>
-			<button class="contacts_reload">Обновить</button>
-			{{/unless}}
-		</div>
-		<div class="contacts-sm-2">
-			<div class="map-container">
-				{{> googleMap name="simexMap" options=mapOptions}}
+	{{#if Template.subscriptionsReady}}
+		<section class="contacts">
+			<div class="contacts-sm-2">
+				<h3>Наш адрес:</h3>
+				<p>{{> editableText context=contacts options=optionsHelper field="address"}}</p>
+				{{#unless admin}}
+				<ul>
+					<li><a href="mailto:{{contacts.email}}">
+						<i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;
+						{{contacts.email}}
+					</a></li>
+					<li><a href="tel:{{contacts.tel}}">
+						<i class="fa fa-phone" aria-hidden="true"></i>&nbsp;
+						{{contacts.tel}}
+					</a></li>
+					<li><a href="http://{{contacts.web}}" target="_blank">
+						<i class="fa fa-globe" aria-hidden="true"></i>&nbsp;
+						{{contacts.web}}
+					</a></li>
+				</ul>
+				{{else}}
+				<ul>
+					<li>
+						<i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;
+						{{> editableText context=contacts options=optionsHelper field="email"}}
+					</li>
+					<li>
+						<i class="fa fa-phone" aria-hidden="true"></i>&nbsp;
+						{{> editableText context=contacts options=optionsHelper field="tel"}}
+					</li>
+					<li>
+						<i class="fa fa-globe" aria-hidden="true"></i>&nbsp;
+						{{> editableText context=contacts options=optionsHelper field="web"}}
+					</li>
+				</ul>
+				<h3>Координаты на карте:</h3>
+				<p>Широта:&nbsp;
+					{{> editableText context=contacts options=optionsHelper field="location.latitude"}}
+				</p>
+				<p>Долгота:&nbsp;
+					{{> editableText context=contacts options=optionsHelper field="location.longitude"}}
+				</p>
+				<button class="contacts_reload">Обновить</button>
+				{{/unless}}
 			</div>
-		</div>
-		
-		{{> contact_form}}
+			<div class="contacts-sm-2">
+				<div class="map-container">
+					{{> googleMap name="simexMap" options=mapOptions}}
+				</div>
+			</div>
+			
+			{{> contact_form}}
 
-		<p class="contact_form_sent">Ваша форма успешно отправлена!</p>
-		
-	</section>
+			<p class="contact_form_sent">Ваша форма успешно отправлена!</p>
+			
+		</section>
+	{{else}}
+		{{> loader}}
+	{{/if}}
 
 </template>
 

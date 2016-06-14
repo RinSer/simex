@@ -201,3 +201,10 @@ Meteor.publish('startData', function() {
 	return Start.find({}, {fields: {title: 1, description: 1, photo: 1}});
 
 });
+
+// Publish startheading data
+Meteor.publish('startHeadingData', function() {
+
+	return StartHeading.find({});
+
+});

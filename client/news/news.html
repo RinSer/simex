@@ -1,7 +1,5 @@
 <template name="news">
 
-	{{> news_quote}}
-
 	{{#if admin}}
 		<h1 class="news_add"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Добавить новость</h1>
 	
@@ -11,9 +9,13 @@
 		{{/if}}
 	{{/if}}
 
-	{{#each news}}
-		{{> each_news}}	
-	{{/each}}
+	{{#if Template.subscriptionsReady}}
+		{{#each news}}
+			{{> each_news}}	
+		{{/each}}
+	{{else}}
+		{{> loader}}
+	{{/if}}
 
 </template>
 

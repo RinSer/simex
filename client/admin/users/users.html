@@ -1,69 +1,73 @@
 <template name="users">
 
-	<section class="users">
-		<ul>
-			<li class="current users">Пользователи</li>
-			<li class="admins">Админы</li>
-		</ul>
-		{{#if admins}}
-			<h3><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Добавить администратора</h3>
-			<div class="new_admin">
-				<p><span class="register_error">Ошибка!</span></p>
-				<form class="add_admin">
-					<label for="firstName">Имя</label>
-					<br>
-					<input type="text" id="firstName" name="firstName">
-					<br>
-					<label for="secondName">Отчество</label>
-					<br>
-					<input type="text" id="secondName" name="secondName">
-					<br>
-					<label for="familyName">Фамилия</label>
-					<br>
-					<input type="text" id="familyName" name="familyName">
-					<br>
-					<label for="email">Email</label>
-					<br>
-					<input type="email" id="email" name="email">
-					<br>
-					<label for="password">Пароль</label>
-					<br>
-					<input type="password" id="password" name="password">
-					<br>
-					<label for="password_check">Повторите</label>
-					<br>
-					<input type="password" id="password_check" name="password_check">
-					<br><br>
-					<input class="submit" type="submit" value="Сохранить">
-					<br>
-					<p><span class="login_error">Не совпадают пароль и подтверждение!</span></p>
-				</form>
+	{{#if Template.subscriptionsReady}}
+		<section class="users">
+			<ul>
+				<li class="current users">Пользователи</li>
+				<li class="admins">Админы</li>
+			</ul>
+			{{#if admins}}
+				<h3><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Добавить администратора</h3>
+				<div class="new_admin">
+					<p><span class="register_error">Ошибка!</span></p>
+					<form class="add_admin">
+						<label for="firstName">Имя</label>
+						<br>
+						<input type="text" id="firstName" name="firstName">
+						<br>
+						<label for="secondName">Отчество</label>
+						<br>
+						<input type="text" id="secondName" name="secondName">
+						<br>
+						<label for="familyName">Фамилия</label>
+						<br>
+						<input type="text" id="familyName" name="familyName">
+						<br>
+						<label for="email">Email</label>
+						<br>
+						<input type="email" id="email" name="email">
+						<br>
+						<label for="password">Пароль</label>
+						<br>
+						<input type="password" id="password" name="password">
+						<br>
+						<label for="password_check">Повторите</label>
+						<br>
+						<input type="password" id="password_check" name="password_check">
+						<br><br>
+						<input class="submit" type="submit" value="Сохранить">
+						<br>
+						<p><span class="login_error">Не совпадают пароль и подтверждение!</span></p>
+					</form>
+				</div>
+			{{/if}}
+			<div style="overflow-x: auto;">
+				<table>
+					<tr>
+						<th>ФИО</th>
+						<th>Email</th>
+						{{#unless admins}}
+							<th>Адрес</th>
+							<th>Рассылка</th>
+							<th>Заказы</th>
+							<th>Формы</th>
+						{{/unless}}
+					</tr>
+					{{#each users}}
+					<tr>
+						{{#unless admins}}
+							{{> user_row}}
+						{{else}}
+							{{> admin_row}}
+						{{/unless}}
+					</tr>
+					{{/each}}
+				</table>
 			</div>
-		{{/if}}
-		<div style="overflow-x: auto;">
-			<table>
-				<tr>
-					<th>ФИО</th>
-					<th>Email</th>
-					{{#unless admins}}
-						<th>Адрес</th>
-						<th>Рассылка</th>
-						<th>Заказы</th>
-						<th>Формы</th>
-					{{/unless}}
-				</tr>
-				{{#each users}}
-				<tr>
-					{{#unless admins}}
-						{{> user_row}}
-					{{else}}
-						{{> admin_row}}
-					{{/unless}}
-				</tr>
-				{{/each}}
-			</table>
-		</div>
-	</section>
+		</section>
+	{{else}}
+		{{> loader}}
+	{{/if}}
 
 </template>
 

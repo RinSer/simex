@@ -1,54 +1,58 @@
 <template name="orders">
 
-	<section class="orders">
-		<h2>Заказы</h2>
-		<ul>
-			<li class="current all_orders">Все</li>
-			<li class="new_orders">Новые</li>
-			<li class="processed_orders">Обработанные</li>
-		</ul>
-		<div style="overflow-x: auto;">
-			<table>
-				<tr>
-					<th>ФИО</th>
-					<th>Email</th>
-					<th>Дата</th>
-					<th>Обработано</th>
-				</tr>
-				{{#each orders}}
-				<tr>
-					<td>
-						{{#if user}}
-							<a href="/users/{{user}}">
+	{{#if Template.subscriptionsReady}}
+		<section class="orders">
+			<h2>Заказы</h2>
+			<ul>
+				<li class="current all_orders">Все</li>
+				<li class="new_orders">Новые</li>
+				<li class="processed_orders">Обработанные</li>
+			</ul>
+			<div style="overflow-x: auto;">
+				<table>
+					<tr>
+						<th>ФИО</th>
+						<th>Email</th>
+						<th>Дата</th>
+						<th>Обработано</th>
+					</tr>
+					{{#each orders}}
+					<tr>
+						<td>
+							{{#if user}}
+								<a href="/users/{{user}}">
+									{{familyName}}
+									&nbsp;{{firstName}}
+									{{#if secondName}}
+										&nbsp;{{secondName}}
+									{{/if}}
+								</a>
+							{{else}}
 								{{familyName}}
 								&nbsp;{{firstName}}
 								{{#if secondName}}
 									&nbsp;{{secondName}}
 								{{/if}}
-							</a>
-						{{else}}
-							{{familyName}}
-							&nbsp;{{firstName}}
-							{{#if secondName}}
-								&nbsp;{{secondName}}
 							{{/if}}
-						{{/if}}
-					</td>
-					<td>{{email}}</td>
-					<td><a href="/orders/{{_id}}">{{createdAt}}</a></td>
-					<td>
-						{{#if processed}}
-							Да
-						{{else}}
-							Нет
-						{{/if}}
-					</td>
-				</tr>
-				{{/each}}
-			</table>
-		</div>
+						</td>
+						<td>{{email}}</td>
+						<td><a href="/orders/{{_id}}">{{createdAt}}</a></td>
+						<td>
+							{{#if processed}}
+								Да
+							{{else}}
+								Нет
+							{{/if}}
+						</td>
+					</tr>
+					{{/each}}
+				</table>
+			</div>
 
-	</section>
+		</section>
+	{{else}}
+		{{> loader}}
+	{{/if}}
 
 </template>
 

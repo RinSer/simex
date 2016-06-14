@@ -12,7 +12,19 @@ Meteor.startup(() => {
   }, {name: "biomodels_search"},
   {default_language: "russian"});
 
-  
+  // Create dev start page heading data
+  const init_start_heading = {
+
+    text: "Откройте для себя биологические тренажеры!"
+
+  };
+
+  if (StartHeading.find().count() === 0) {
+
+    StartHeading.insert(init_start_heading);
+
+  }
+
   // Create dev start page data
   const init_start = [
 

@@ -1,18 +1,22 @@
 <template name="biomodels">
 
-	<section id="biomodels">
-		<h2>Биомодели</h2>
-		<p>{{> editableText context=info options=optionsHelper }}</p>
-		{{#if admin}}
-			<h1 class="biomodel_add"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Добавить биомодель</h1>
-			{{#if add_biomodel}}
-				{{> new_biomodel}}
+	{{#if Template.subscriptionsReady}}
+		<section id="biomodels">
+			<h2>Биомодели</h2>
+			<p>{{> editableText context=info options=optionsHelper }}</p>
+			{{#if admin}}
+				<h1 class="biomodel_add"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Добавить биомодель</h1>
+				{{#if add_biomodel}}
+					{{> new_biomodel}}
+				{{/if}}
 			{{/if}}
-		{{/if}}
-		{{#each biomodels}}
-			{{> each_biomodel}}
-		{{/each}}
-	</section>
+			{{#each biomodels}}
+				{{> each_biomodel}}
+			{{/each}}
+		</section>
+	{{else}}
+		{{> loader}}
+	{{/if}}
 
 </template>
 
@@ -72,25 +76,29 @@
 
 <template name="biomodel">
 
-	<section class="biomodel">
-		<h3>{{> editableText context=biomodel options=optionsHelper field="title"}}</h3>
-		<div class="biomodel-col-2">
-			<img class="biomodel_main" src="{{current_photo}}">
-			{{#each photo in biomodel.photos}}
-				{{> biomodel_img current_photo=current_photo photo=photo index=@index}}
-			{{/each}}
-		</div>
-		<div class="biomodel-col-2">
-			<p>{{> editableText context=biomodel options=optionsHelper field="description"}}<img style="float:right; padding: 10px;" src="{{biomodel.pic}}" height="100px"></p>
-			<h4>Цена: {{> editableText context=biomodel options=optionsHelper field="price"}} р.</h4>
-			<p class="trainer_price">Аренда тренажера SIMEX GI – {{sim_price}} р.</p>
-			<p class="trainer_link"><a href="/simulator">Биомодель фиксируется в тренажер SIMEX GI</a></p>
-			<p>{{> editableText context=biomodel options=optionsHelper field="full_description"}}</p>
-			<button class="add_to_cart">Добавить в корзину</button>
-			<p class="cart_alert">Успешно добавлено!</p>
-		</div>
-		<div class="clear"></div>
-	</section>
+	{{#if Template.subscriptionsReady}}
+		<section class="biomodel">
+			<h3>{{> editableText context=biomodel options=optionsHelper field="title"}}</h3>
+			<div class="biomodel-col-2">
+				<img class="biomodel_main" src="{{current_photo}}">
+				{{#each photo in biomodel.photos}}
+					{{> biomodel_img current_photo=current_photo photo=photo index=@index}}
+				{{/each}}
+			</div>
+			<div class="biomodel-col-2">
+				<p>{{> editableText context=biomodel options=optionsHelper field="description"}}<img style="float:right; padding: 10px;" src="{{biomodel.pic}}" height="100px"></p>
+				<h4>Цена: {{> editableText context=biomodel options=optionsHelper field="price"}} р.</h4>
+				<p class="trainer_price">Аренда тренажера SIMEX GI – {{sim_price}} р.</p>
+				<p class="trainer_link"><a href="/simulator">Биомодель фиксируется в тренажер SIMEX GI</a></p>
+				<p>{{> editableText context=biomodel options=optionsHelper field="full_description"}}</p>
+				<button class="add_to_cart">Добавить в корзину</button>
+				<p class="cart_alert">Успешно добавлено!</p>
+			</div>
+			<div class="clear"></div>
+		</section>
+	{{else}}
+		{{> loader}}
+	{{/if}}
 
 </template>
 
