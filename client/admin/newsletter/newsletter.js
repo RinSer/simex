@@ -30,3 +30,17 @@ Template.newsletter.helpers({
 	}
 
 });
+
+Template.newsletter.events({
+
+	'click button#copy':function(event, template) {
+
+		event.preventDefault();
+
+		const text = $('p#emails').text();
+
+		window.prompt("Чтобы копировать нажми: Ctrl+C, Enter", text);
+
+	}
+
+});

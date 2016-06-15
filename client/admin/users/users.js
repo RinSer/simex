@@ -52,12 +52,16 @@ Template.users.events({
 
 	'click li.users':function(event, template) {
 
+		$('li.current').removeClass('current');
+		$(event.target).addClass('current');
 		template.admin_group.set(false);
 
 	},
 
 	'click li.admins':function(event, template) {
 
+		$('li.current').removeClass('current');
+		$(event.target).addClass('current');
 		template.admin_group.set(true);
 
 	},

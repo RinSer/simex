@@ -50,18 +50,24 @@ Template.orders.events({
 
 	'click .all_orders':function(event, template) {
 
+		$('li.current').removeClass('current');
+		$(event.target).addClass('current');
 		template.status.set(0);
 
 	},
 
 	'click .new_orders':function(event, template) {
 
+		$('li.current').removeClass('current');
+		$(event.target).addClass('current');
 		template.status.set(1);
 
 	},
 
 	'click .processed_orders':function(event, template) {
 
+		$('li.current').removeClass('current');
+		$(event.target).addClass('current');
 		template.status.set(2);
 
 	}
