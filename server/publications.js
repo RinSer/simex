@@ -82,7 +82,7 @@ Meteor.publish('simulatorsData', function() {
 // Publish SIMEX GI price
 Meteor.publish('simexgiData', function() {
 
-	return Simulators.find({title: "SIMEX GI"}, {fields: {price: 1}});
+	return Simulators.find({}, {fields: {price: 1}}); //({title: "SIMEX GI"}, {fields: {price: 1}});
 
 });
 
